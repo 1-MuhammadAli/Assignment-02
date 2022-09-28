@@ -1,3 +1,5 @@
+import 'package:assignment_no_2/login_screen.dart';
+import 'package:assignment_no_2/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'walkthroughs_screen.dart';
@@ -26,7 +28,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const WalkthroughScreen(),
+      home:  SignUpScreen(),
     );
   }
 }
