@@ -26,6 +26,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
     var screenSize=MediaQuery.of(context).size;
     return Container(
       height: screenSize.height*1,
+      color: Colors.black12,
       child: Column(
         children: [
           Container(
@@ -47,22 +48,26 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
             children: [
               Container(
                 height: screenSize.height*0.1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ...List.generate(
-                      listStock.length,
-                          (index) => Indicator(
-                        isActive: activeIndex == index ? true : false,
-                      ),
-                    )
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 20.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ...List.generate(
+                        listStock.length,
+                            (index) => Indicator(
+                          isActive: activeIndex == index ? true : false,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
               Container(
                 width: 218,
                 height: 48,
                 decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5.0),
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -111,11 +116,11 @@ class Indicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 3.0),
-      height: 8.0,
-      width: isActive ? 8.0 : 8.0,
+      height:isActive ? 11.0 : 8.0,
+      width: isActive ? 11.0 : 8.0,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8.0),
-        color: isActive ? Colors.green : Colors.white,
+        color: isActive ? Colors.yellowAccent : Colors.white,
       ),
     );
   }
