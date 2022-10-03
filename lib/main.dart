@@ -1,7 +1,12 @@
+import 'package:assignment_no_2/feed_screen.dart';
+import 'package:assignment_no_2/forgotpassword_screen.dart';
 import 'package:assignment_no_2/login_screen.dart';
+import 'package:assignment_no_2/news_screen.dart';
+import 'package:assignment_no_2/resetpassword_screen.dart';
 import 'package:assignment_no_2/signup_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'admin_screen.dart';
 import 'walkthroughs_screen.dart';
 
 void main() {
@@ -28,7 +33,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  SignUpScreen(),
+      home:  FeedScreen(),
     );
   }
 }
