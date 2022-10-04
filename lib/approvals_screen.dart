@@ -1,12 +1,11 @@
 import 'package:assignment_no_2/widgets/floatingactionbutton_widget.dart';
 import 'package:assignment_no_2/widgets/newscard_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'addnews_screen.dart';
 
-class FeedScreen extends StatelessWidget {
-  const FeedScreen({Key? key}) : super(key: key);
+class ApprovalsScreen extends StatelessWidget {
+  const ApprovalsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +15,10 @@ class FeedScreen extends StatelessWidget {
           height: 598.6,
           width: double.infinity,
           decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('images/BGImage.png'),
-              fit: BoxFit.fill,
-            )
+              image: DecorationImage(
+                image: AssetImage('images/BGImage.png'),
+                fit: BoxFit.fill,
+              )
           ),
           child: Column(
             children: [
@@ -48,7 +47,7 @@ class FeedScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton:   FloatingActionButtonWidget(
+        floatingActionButton:  FloatingActionButtonWidget(
           onPressed: () {
             Navigator.push(
               context,
@@ -59,7 +58,3 @@ class FeedScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-

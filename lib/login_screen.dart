@@ -1,8 +1,16 @@
+import 'package:assignment_no_2/news_screen.dart';
 import 'package:assignment_no_2/passwordtextfield_widget.dart';
+import 'package:assignment_no_2/signup_screen.dart';
 import 'package:assignment_no_2/textformfield_widget.dart';
+import 'package:assignment_no_2/widgets/button_widget.dart';
+import 'package:assignment_no_2/widgets/text_widget.dart';
+import 'package:assignment_no_2/widgets/underlinetext_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import 'addnews_screen.dart';
+import 'forgotpassword_screen.dart';
 
 class LoginScreen extends StatelessWidget {
    LoginScreen({Key? key}) : super(key: key);
@@ -16,17 +24,15 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: Text('Sign Up',
-        style: GoogleFonts.openSans(
-          textStyle: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w400
-          ),
-        ),
+        title: TextWidget(
+          text: 'Sign In',
+          fontWeight: FontWeight.w400,
+          textSize: 16, color: Color(0xffFFFFFF),
         ),
       ),
       body: Column(
         children: [
+          SizedBox(height: 58,),
           Container(
             height: 116,
             width: 116,
@@ -36,6 +42,7 @@ class LoginScreen extends StatelessWidget {
               )
             ),
           ),
+          SizedBox(height: 51,),
           Form(
             key: formkey,
             child: Column(
@@ -44,6 +51,7 @@ class LoginScreen extends StatelessWidget {
                   controller: emailController,
                   validator: ValidationBuilder().email().maxLength(50).build(),
                   label: 'Email', icon: Icons.email,textInputType: TextInputType.emailAddress,),
+                SizedBox(height: 24,),
                 PasswordTextFieldWidget(controller: passController,text: 'Password',
                   validator: (value) {
                     RegExp regex =
@@ -60,60 +68,42 @@ class LoginScreen extends StatelessWidget {
                   },
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180.0),
-                  child: Text('Forgot Password ?',
-                  style: GoogleFonts.openSans(
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 14
-                    )
-                  ),
+                  padding: const EdgeInsets.only(left: 180.0,top: 16),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),);
+                    },
+                    child: Text('Forgot Password ?',
+                    style: GoogleFonts.openSans(
+                      textStyle: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xffFFFFFF)
+                      )
+                    ),
+                    ),
                   ),
                 ),
-                Container(
+                SizedBox(height: 32,),
+                ButtonWidget(
                   width: 327,
                   height: 48,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0.0, 2.0],
-                      colors: [
-                        Colors.pinkAccent,
-                        Colors.deepPurple,
-                      ],
-                    ),
-                  ),
-                  child: ElevatedButton(onPressed:  () {
-                  }, child:  Text('Sign In',
-                  style: GoogleFonts.raleway(
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      // elevation: MaterialStateProperty.all(3),
-                      //shadowColor: Colors.transparent,
-                    ),
-                  ),
+                  text: 'Sign In',
+                  onPress: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NewsScreen()),);
+                  },
                 ),
+                SizedBox(height: 48,),
                 Center(
-                  child: Text('Or by social accounts',
-                  style: GoogleFonts.openSans(
-                    textStyle: TextStyle(
-                      color: Colors.white,
+                  child: TextWidget(text: 'Or by social accounts',
                       fontWeight: FontWeight.w400,
-                      fontSize: 14
-                    )
-                  ),
-                  ),
+                      textSize: 14, color: Color(0xffFFFFFF)),
                 ),
+                SizedBox(height: 20,),
 
                 Center(
                   child: Row(
@@ -127,29 +117,21 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                SizedBox(height: 80,),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don’t have an account ?  ',
-                      style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 14
-                          ),
-                      ),
-                    ),
-                    Text(
-                      'Sign Up',
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          decoration: TextDecoration.underline,
-                          decorationThickness: 5,
-                          color: Colors.cyan,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500
-                        ),
-                      )
+                    TextWidget(text: 'Don’t have an account ?  ',
+                        fontWeight: FontWeight.w400,
+                        textSize: 14,
+                        color: Color(0xffFFFFFF)),
+                    UnderLineTextWidget(
+                      text: 'Sign Up',
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUpScreen()),);
+                      },
                     )
                   ],
                 )
@@ -161,3 +143,5 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+

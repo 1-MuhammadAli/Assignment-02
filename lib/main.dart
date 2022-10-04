@@ -1,3 +1,4 @@
+import 'package:assignment_no_2/addnews_screen.dart';
 import 'package:assignment_no_2/feed_screen.dart';
 import 'package:assignment_no_2/forgotpassword_screen.dart';
 import 'package:assignment_no_2/login_screen.dart';
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  FeedScreen(),
+      home:  WalkthroughScreen(),
     );
   }
 }

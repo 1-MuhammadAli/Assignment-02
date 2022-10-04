@@ -1,4 +1,5 @@
 
+import 'package:assignment_no_2/forgotpassword_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'admin_screen.dart';
@@ -29,20 +30,6 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        leading: Icon(Icons.menu,color: Colors.white,),
-        title: SizedBox(
-          height: 32,
-          width: 32,
-          child: Image.asset('images/Frame.png'),
-        ),
-        centerTitle: true,
-        actions: [
-          Icon(Icons.notifications_none_outlined,color: Colors.white,)
-        ],
-      ),
       body: Center(
         child: _pageOptions.elementAt(_selectedIndex),
       ),

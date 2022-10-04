@@ -1,4 +1,10 @@
+import 'package:assignment_no_2/addnews_screen.dart';
+import 'package:assignment_no_2/resetpassword_screen.dart';
+import 'package:assignment_no_2/signup_screen.dart';
 import 'package:assignment_no_2/textformfield_widget.dart';
+import 'package:assignment_no_2/widgets/button_widget.dart';
+import 'package:assignment_no_2/widgets/text_widget.dart';
+import 'package:assignment_no_2/widgets/underlinetext_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,6 +32,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
+          SizedBox(height: 58,),
           Container(
             height: 116,
             width: 116,
@@ -35,20 +42,16 @@ class ForgotPasswordScreen extends StatelessWidget {
                 )
             ),
           ),
+          SizedBox(height: 51,),
           Padding(
-            padding: const EdgeInsets.only(top: 15.0),
+            padding: const EdgeInsets.only(top: 15.0,bottom: 35),
             child: SizedBox(
               width: 275,
               height: 48,
-              child: Text('Enter your email or phone number to retrieve your password.',
-                textAlign: TextAlign.center,
-                style: GoogleFonts.openSans(textStyle: TextStyle(
-                  fontSize: 16,
+              child: TextWidget(text: 'Enter your email or phone number to retrieve your password.',
                   fontWeight: FontWeight.w400,
-                  color: Colors.white,
-
-                )),
-              ),
+                  textSize: 16,
+                  color: Color(0xffFFFFFF)),
             ),
           ),
           Form(
@@ -59,67 +62,34 @@ class ForgotPasswordScreen extends StatelessWidget {
                   controller: emailController,
                   validator: ValidationBuilder().email().maxLength(50).build(),
                   label: 'Email or Phone Number', icon: Icons.email,textInputType: TextInputType.emailAddress,),
+                SizedBox(height: 35,),
 
 
-                Container(
-                  width: 327,
-                  height: 48,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5.0),
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      stops: [0.0, 2.0],
-                      colors: [
-                        Colors.pinkAccent,
-                        Colors.deepPurple,
-                      ],
-                    ),
-                  ),
-                  child: ElevatedButton(onPressed:  () {
-                  }, child:  Text('Reset Password',
-                    style: GoogleFonts.raleway(
-                      textStyle: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                    style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      // elevation: MaterialStateProperty.all(3),
-                      //shadowColor: Colors.transparent,
-                    ),
-                  ),
-                ),
+                ButtonWidget(text: 'Reset Password',
+                    height: 48,
+                    width: 327,
+                    onPress: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResetPasswordScreen()),);
+                    },),
+                SizedBox(height: 210,),
 
 
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Don’t have an account ?  ',
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
-                            fontSize: 14
-                        ),
-                      ),
-                    ),
-                    Text(
-                        'Sign Up',
-                        style: GoogleFonts.openSans(
-                          textStyle: TextStyle(
-                              decoration: TextDecoration.underline,
-                              decorationThickness: 5,
-                              color: Colors.cyan,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500
-                          ),
-                        )
-                    )
+                    TextWidget(text: 'Don’t have an account ?  ',
+                        fontWeight: FontWeight.w400,
+                        textSize: 14,
+                        color: Color(0xffFFFFFF)),
+                    UnderLineTextWidget(onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignUpScreen()),);
+                    }, text: 'Sign Up')
+
                   ],
                 )
               ],
