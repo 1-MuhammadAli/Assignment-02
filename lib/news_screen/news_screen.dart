@@ -1,8 +1,8 @@
 
-import 'package:assignment_no_2/forgotpassword_screen.dart';
+import 'package:assignment_no_2/loginscreens/forgotpassword_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'admin_screen.dart';
+import 'adminscreen/admin_screen.dart';
 
 class NewsScreen extends StatefulWidget {
   const NewsScreen({super.key});

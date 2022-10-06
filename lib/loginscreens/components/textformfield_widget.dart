@@ -45,6 +45,7 @@ class TextFormFieldWidget extends StatelessWidget {
             errorBorder: InputBorder.none,
             disabledBorder: InputBorder.none,
           ),
+          style: TextStyle(color: Color(0xffFFFFFF),),
           textInputAction: TextInputAction.next,
           keyboardType: textInputType,
         ),

@@ -1,15 +1,8 @@
-import 'package:assignment_no_2/addnews_screen.dart';
-import 'package:assignment_no_2/feed_screen.dart';
-import 'package:assignment_no_2/forgotpassword_screen.dart';
-import 'package:assignment_no_2/login_screen.dart';
-import 'package:assignment_no_2/news_screen.dart';
-import 'package:assignment_no_2/resetpassword_screen.dart';
-import 'package:assignment_no_2/signup_screen.dart';
+
+import 'package:assignment_no_2/loginscreens/resetpassword_screen.dart';
+import 'package:assignment_no_2/walkthroughscreen/walkthroughs_screen.dart';
 import 'package:flutter/material.dart';
-
-import 'admin_screen.dart';
-import 'walkthroughs_screen.dart';
-
+import 'news_screen/adminscreen/admin_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -34,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home:  WalkthroughScreen(),
+      home:  ResetPasswordScreen(),
     );
   }
 }

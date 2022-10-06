@@ -1,5 +1,5 @@
-import 'package:assignment_no_2/widgets/floatingactionbutton_widget.dart';
-import 'package:assignment_no_2/widgets/newscard_widget.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/components/floatingactionbutton_widget.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/components/newscard_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

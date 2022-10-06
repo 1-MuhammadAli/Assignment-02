@@ -1,15 +1,16 @@
-import 'package:assignment_no_2/widgets/floatingactionbutton_widget.dart';
-import 'package:assignment_no_2/widgets/newscard_widget.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/components/floatingactionbutton_widget.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/components/newscard_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'addnews_screen.dart';
 
-class MyFeedScreen extends StatelessWidget {
-  const MyFeedScreen({Key? key}) : super(key: key);
+class ApprovalsScreen extends StatelessWidget {
+  const ApprovalsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return SafeArea(
+      child: Scaffold(
         body: Container(
           height: 598.6,
           width: double.infinity,
@@ -46,13 +47,14 @@ class MyFeedScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton:   FloatingActionButtonWidget(
+        floatingActionButton:  FloatingActionButtonWidget(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => AddNewsScreen()),);
           },
         ),
-      );
+      ),
+    );
   }
 }

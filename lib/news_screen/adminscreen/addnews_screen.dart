@@ -1,7 +1,7 @@
-import 'package:assignment_no_2/searchmatch_screen.dart';
+import 'searchmatch_screen.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
 import 'package:assignment_no_2/widgets/text_widget.dart';
-import 'package:assignment_no_2/widgets/textfield_widget.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/components/textfield_widget.dart';
 import 'package:flutter/material.dart';
 
 class AddNewsScreen extends StatelessWidget {

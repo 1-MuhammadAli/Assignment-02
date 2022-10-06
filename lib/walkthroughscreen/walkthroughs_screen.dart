@@ -1,11 +1,11 @@
-import 'package:assignment_no_2/walkthrough_page1.dart';
-import 'package:assignment_no_2/walkthrough_page2.dart';
-import 'package:assignment_no_2/walkthrough_page3.dart';
+import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page1.dart';
+import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page2.dart';
+import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page3.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
-import 'package:assignment_no_2/widgets/pageindicator_widget.dart';
+import 'package:assignment_no_2/walkthroughscreen/components/pageindicator_widget.dart';
 import 'package:flutter/material.dart';
 
-import 'login_screen.dart';
+import '../loginscreens/login_screen.dart';
 
 class WalkthroughScreen extends StatefulWidget {
    const WalkthroughScreen({Key? key}) : super(key: key);

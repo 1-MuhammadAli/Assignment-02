@@ -5,14 +5,15 @@ class PasswordTextFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String text;
   final Function validator;
-  PasswordTextFieldWidget({required this.controller,required this.text,required this.validator});
+  final TextInputAction textInputAction;
+  PasswordTextFieldWidget({required this.controller,required this.text,required this.validator,required this.textInputAction});
 
   @override
   State<PasswordTextFieldWidget> createState() => _PasswordTextFieldWidgetState();
 }
 
 class _PasswordTextFieldWidgetState extends State<PasswordTextFieldWidget> {
-  bool isPasswordVisible=false;
+  bool isPasswordVisible=true;
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -27,7 +28,7 @@ class _PasswordTextFieldWidgetState extends State<PasswordTextFieldWidget> {
           controller: widget.controller,
           validator: (value) => widget.validator(value),
           obscureText: isPasswordVisible,
-          textInputAction: TextInputAction.done,
+          textInputAction: widget.textInputAction,
           decoration: InputDecoration(
             label: Text(widget.text),
             labelStyle: GoogleFonts.openSans(
@@ -49,10 +50,14 @@ class _PasswordTextFieldWidgetState extends State<PasswordTextFieldWidget> {
               });
             },
               icon: isPasswordVisible
-                  ? const Icon(Icons.visibility, color: Color(0xffA8A8A8),)
-                  : const Icon(Icons.visibility_off, color: Color(0xffA8A8A8),),
+                  ? const Icon(Icons.visibility_off, color: Color(0xffA8A8A8),)
+                  : const Icon(Icons.visibility, color: Color(0xffA8A8A8),),
             ),
           ),
+          style: TextStyle(
+            color: Color(0xffFFFFFF),
+          ),
+          keyboardType: TextInputType.visiblePassword,
         ),
       ),
     );

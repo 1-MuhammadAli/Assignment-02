@@ -1,8 +1,10 @@
-import 'package:assignment_no_2/approvals_screen.dart';
-import 'package:assignment_no_2/feed_screen.dart';
-import 'package:assignment_no_2/forgotpassword_screen.dart';
-import 'package:assignment_no_2/myfeed_screen.dart';
+import 'approvals_screen.dart';
+import 'feed_screen.dart';
+
 import 'package:flutter/material.dart';
+
+import 'components/drawer_widget.dart';
+import 'myfeed_screen.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({Key? key}) : super(key: key);
@@ -29,7 +31,7 @@ class _AdminScreenState extends State<AdminScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
-        leading: Icon(Icons.menu,color: Colors.white,),
+        //leading: Icon(Icons.menu,color: Colors.white,),
         title: SizedBox(
           height: 32,
           width: 32,
@@ -40,6 +42,7 @@ class _AdminScreenState extends State<AdminScreen> {
           Icon(Icons.notifications_none_outlined,color: Colors.white,)
         ],
       ),
+        drawer: DrawerWidget(),
         body: Container(
           width: double.infinity,
           color: Colors.black,
@@ -105,3 +108,7 @@ class _AdminScreenState extends State<AdminScreen> {
       );
   }
 }
+
+
+
+
