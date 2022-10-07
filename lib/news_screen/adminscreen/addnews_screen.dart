@@ -1,3 +1,9 @@
+import 'dart:convert';
+import 'dart:core';
+import 'dart:core';
+
+import 'package:http/http.dart';
+
 import 'searchmatch_screen.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
 import 'package:assignment_no_2/widgets/text_widget.dart';
@@ -5,6 +11,37 @@ import 'package:assignment_no_2/news_screen/adminscreen/components/textfield_wid
 import 'package:flutter/material.dart';
 
 class AddNewsScreen extends StatelessWidget {
+  final desController=TextEditingController();
+  final titleController=TextEditingController();
+  final int userId=36;
+  final int leagueId=31;
+  final int matchId=1;
+  void addnews(String description,title,userId,leagueId,matchId) async {
+    try{
+      Response response= await post(
+          Uri.parse('http://54.197.94.1/api/v1/news'),
+          body: {
+            'description':description,
+            'title':title,
+            'user_id':userId,
+            'league_id':leagueId,
+            'match_id':matchId,
+
+          }
+      );
+      if(response.statusCode==200||response.statusCode==201){
+        var data=jsonDecode(response.body.toString());
+        debugPrint(data);
+        debugPrint('Response successfully');
+      }
+      else{
+        debugPrint('fail');
+      }
+    }
+    catch (e){
+      debugPrint(e.toString());
+    }
+  }
   void startAddNewTransaction(BuildContext ctx){
     showModalBottomSheet(
         isScrollControlled: true,
@@ -55,87 +92,95 @@ class AddNewsScreen extends StatelessWidget {
         ),
       ),
       body: Container(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: 31,),
-            Padding(
-              padding: const EdgeInsets.only(left: 32.0),
-              child: TextWidget(
-                text: 'Title',
-                fontWeight: FontWeight.w400,
-                textSize: 16,
-                color: Color(0xffFFFFFF),
-              ),
-            ),
-            SizedBox(height: 8,),
-            Center(
-              child: TextFieldWidget(
-                height: 48,
-                width: 327,
-              ),
-            ),
-            SizedBox(height: 15,),
-            Padding(
-              padding: const EdgeInsets.only(left: 32.0),
-              child: TextWidget(
-                text: 'Description',
-                fontWeight: FontWeight.w400,
-                textSize: 16,
-                color: Color(0xffFFFFFF),
-              ),
-            ),
-            SizedBox(height: 8,),
-            Center(
-              child: TextFieldWidget(
-                height: 149,
-                width: 327,
-              ),
-            ),
-            SizedBox(height: 15,),
-            Padding(
-              padding: const EdgeInsets.only(left: 32.0),
-              child: TextWidget(
-                text: 'Match:',
-                fontWeight: FontWeight.w400,
-                textSize: 16,
-                color: Color(0xffFFFFFF),
-              ),
-            ),
-            SizedBox(height: 8,),
-            Center(
-              child: Container(
-                height: 48,
-                width: 327,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10.0),
-                  color: Color(0xff111820),
-                  border: Border.all(width: 1.0,color: Colors.grey)
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: 31,),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0),
+                child: TextWidget(
+                  text: 'Title',
+                  fontWeight: FontWeight.w400,
+                  textSize: 16,
+                  color: Color(0xffFFFFFF),
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      hintStyle: TextStyle(color: Color(0xffFFFFFF)),
-                      border: InputBorder.none,
-                      suffixIcon: Icon(Icons.search,color: Color(0xffFFFFFF),)
+              ),
+              SizedBox(height: 8,),
+              Center(
+                child: TextFieldWidget(
+                  controller: titleController,
+                  height: 48,
+                  width: 327,
+                ),
+              ),
+              SizedBox(height: 15,),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0),
+                child: TextWidget(
+                  text: 'Description',
+                  fontWeight: FontWeight.w400,
+                  textSize: 16,
+                  color: Color(0xffFFFFFF),
+                ),
+              ),
+              SizedBox(height: 8,),
+              Center(
+                child: TextFieldWidget(
+                  controller: desController,
+                  height: 149,
+                  width: 327,
+                ),
+              ),
+              SizedBox(height: 15,),
+              Padding(
+                padding: const EdgeInsets.only(left: 32.0),
+                child: TextWidget(
+                  text: 'Match:',
+                  fontWeight: FontWeight.w400,
+                  textSize: 16,
+                  color: Color(0xffFFFFFF),
+                ),
+              ),
+              SizedBox(height: 8,),
+              Center(
+                child: Container(
+                  height: 48,
+                  width: 327,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10.0),
+                    color: Color(0xff111820),
+                    border: Border.all(width: 1.0,color: Colors.grey)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10.0),
+                    child: TextField(
+                      onTap: ()=>startAddNewTransaction(context),
+                      decoration: InputDecoration(
+                        hintText: 'Search',
+                        hintStyle: TextStyle(color: Color(0xffFFFFFF)),
+                        border: InputBorder.none,
+                        suffixIcon: Icon(Icons.search,color: Color(0xffFFFFFF),)
+                      ),
+                      style: TextStyle(color: Color(0xffFFFFFF)),
+                      cursorColor: Color(0xffFFFFFF),
+                      keyboardType: TextInputType.none,
                     ),
-                    style: TextStyle(color: Color(0xffFFFFFF)),
-                    cursorColor: Color(0xffFFFFFF),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: 113,),
-            Center(
-              child: ButtonWidget(text: 'Submit',
-                  height: 48,
-                  width: 327,
-                  onPress: () => startAddNewTransaction(context),
-              ),
-            )
-          ],
+              SizedBox(height: 113,),
+              Center(
+                child: ButtonWidget(text: 'Submit',
+                    height: 48,
+                    width: 327,
+                    onPress: () {
+                  addnews(desController.text.toString(),titleController.text.toString(),userId.toString(),leagueId.toString(),matchId.toString());
+                    },
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

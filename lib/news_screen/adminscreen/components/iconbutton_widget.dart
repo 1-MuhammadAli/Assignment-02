@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 class IconButtonWidget extends StatefulWidget {
+  int index;
   IconButtonWidget({
-    Key? key,
+    Key? key,required this.index,
   }) : super(key: key);
 
   @override
   State<IconButtonWidget> createState() => _IconButtonWidgetState();
 }
-bool _isChecked=false;
+int? selectIndex;
 class _IconButtonWidgetState extends State<IconButtonWidget> {
 
   @override
@@ -15,11 +16,11 @@ class _IconButtonWidgetState extends State<IconButtonWidget> {
     return InkWell(
       onTap: () async {
         setState(() {
-          _isChecked=!_isChecked;
+          selectIndex=widget.index;
         });
       },
       child: Container(
-        child: _isChecked?Icon(Icons.check_circle_outline,color: Colors.cyan,):Icon(Icons.circle_outlined,color: Colors.cyan,),
+        child: selectIndex==widget.index?Icon(Icons.check_circle_outline,color: Colors.cyan,):Icon(Icons.circle_outlined,color: Colors.cyan,),
       ),
     );
   }

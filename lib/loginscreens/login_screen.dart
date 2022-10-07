@@ -121,9 +121,9 @@ class LoginScreen extends StatelessWidget {
                       login(emailController.text.toString(),
                         passController.text.toString(),
                       );
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => NewsScreen()),);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => NewsScreen()),);
                     },
                   ),
                   SizedBox(height: 48,),

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class TextFieldWidget extends StatelessWidget {
   final double height;
   final double width;
+  final TextEditingController controller;
   TextFieldWidget({
-    Key? key,required this.width,required this.height
+    Key? key,required this.width,required this.height,required this.controller
   }) : super(key: key);
 
   @override
@@ -17,6 +18,7 @@ class TextFieldWidget extends StatelessWidget {
         color: Color(0xff1B1F2A),
       ),
       child: TextField(
+        controller: controller,
         cursorColor: Color(0xffFFFFFF),
         decoration: InputDecoration(
           border: InputBorder.none,
