@@ -1,18 +1,22 @@
 
 import 'package:assignment_no_2/loginscreens/resetpassword_screen.dart';
+import 'package:assignment_no_2/user_apiservice.dart';
 import 'package:assignment_no_2/walkthroughscreen/walkthroughs_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'news_screen/adminscreen/admin_screen.dart';
-void main() {
+void main() async {
+SharedPreferences pref =await SharedPreferences.getInstance();
+
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  MyApp({Key? key}) : super(key: key);
+  SharedPreferences? preferences;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    UserApiServices userApiServices=UserApiServices();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();

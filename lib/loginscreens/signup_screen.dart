@@ -18,7 +18,7 @@ class SignUpScreen extends StatelessWidget {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
-  void signup(String name,email,password,confirmPassword) async{
+  void signup(String name,email,password,confirmPassword,) async{
     try{
       Response response= await post(
         Uri.parse('http://54.197.94.1/api/v1/users/?user[email]=ali@mailinator.com&user[first_name]=ali&user[password]=12345678&user[password_confirmation]=12345678'),
@@ -31,8 +31,10 @@ class SignUpScreen extends StatelessWidget {
       );
       if(response.statusCode==200||response.statusCode==201){
         var data=jsonDecode(response.body.toString());
-        debugPrint(data['api_token']);
-        debugPrint('Account created successfully');
+
+        // debugPrint(data['api_token']);
+        // debugPrint('Account created successfully');
+       // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
       }
       else{
         debugPrint('fail');
@@ -130,9 +132,7 @@ class SignUpScreen extends StatelessWidget {
                       signup(nameController.text.toString(),emailController.text.toString(),
                         passController.text.toString(),confirmPassController.text.toString(),
                       );
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => LoginScreen()),);
+
                     },
                   ),
 
