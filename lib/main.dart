@@ -1,29 +1,34 @@
-
 import 'package:assignment_no_2/loginscreens/resetpassword_screen.dart';
+import 'package:assignment_no_2/news_screen/adminscreen/addnews_screen.dart';
 import 'package:assignment_no_2/user_apiservice.dart';
 import 'package:assignment_no_2/walkthroughscreen/walkthroughs_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'constant.dart';
 import 'news_screen/adminscreen/admin_screen.dart';
-void main() async {
-SharedPreferences pref =await SharedPreferences.getInstance();
 
-  runApp(const MyApp());
+late SharedPreferences preferences;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  preferences = await SharedPreferences.getInstance();
+  id = preferences.getString('id');
+  token=preferences.getString('api_token');
+  runApp(MyApp());
 }
+
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  SharedPreferences? preferences;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    UserApiServices userApiServices=UserApiServices();
+    UserApiServices userApiServices = UserApiServices();
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
 
-      // if (!currentFocus.hasPrimaryFocus) {
-      //   currentFocus.unfocus();
-      //   }
+        // if (!currentFocus.hasPrimaryFocus) {
+        //   currentFocus.unfocus();
+        //   }
       },
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -39,9 +44,8 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home:  WalkthroughScreen(),
+        home: id == null ? AdminScreen() : WalkthroughScreen(),
       ),
     );
   }
 }
-
