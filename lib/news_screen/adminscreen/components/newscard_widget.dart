@@ -5,11 +5,11 @@ class NewsCardWidget extends StatelessWidget {
   final String name;
   final String description;
   final String image;
-  final String time;
+  //final String time;
   const NewsCardWidget({
     Key? key,
     required this.name,required this.description,
-    required this.image,required this.time
+    required this.image,//required this.time
   }) : super(key: key);
 
   @override
@@ -23,16 +23,16 @@ class NewsCardWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 260.0,top: 15),
-            child: Text(time,
-              style: GoogleFonts.openSans(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.cyan
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left: 260.0,top: 15),
+          //   child: Text(time,
+          //     style: GoogleFonts.openSans(
+          //         fontSize: 12,
+          //         fontWeight: FontWeight.w400,
+          //         color: Colors.cyan
+          //     ),
+          //   ),
+          // ),
           Padding(
             padding: const EdgeInsets.only(left: 10.0,top: 15),
             child:  Container(

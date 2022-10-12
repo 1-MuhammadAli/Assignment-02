@@ -1,3 +1,4 @@
+import 'package:assignment_no_2/getallnews_apiservices.dart';
 import 'package:assignment_no_2/news_screen/adminscreen/components/floatingactionbutton_widget.dart';
 import 'package:assignment_no_2/news_screen/adminscreen/components/newscard_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ class FeedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetAllNewsApiServices getAllNewsApiServices=GetAllNewsApiServices();
     return SafeArea(
       child: Scaffold(
         body: Container(
@@ -21,32 +23,13 @@ class FeedScreen extends StatelessWidget {
               fit: BoxFit.fill,
             )
           ),
-          child: Column(
-            children: [
-              SizedBox(height: 10,),
-              NewsCardWidget(
-                name: 'James FC',
-                description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
-                image: 'images/Frame.png',
-                time: '1 mint ago',
-              ),
-              SizedBox(height: 10,),
-              NewsCardWidget(
-                name: 'James FC',
-                description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
-                image: 'images/Frame.png',
-                time: '1 mint ago',
-              ),
-              SizedBox(height: 10,),
-              NewsCardWidget(
-                name: 'James FC',
-                description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
-                image: 'images/Frame.png',
-                time: '1 mint ago',
-              ),
-
-            ],
-          ),
+          child: ListView.builder(
+            itemCount: getAllNewsApiServices.allNewsDataList.length,
+            itemBuilder: (context, index) {
+            return NewsCardWidget(name: getAllNewsApiServices.allNewsDataList[index].user.firstName,
+                description: getAllNewsApiServices.allNewsDataList[index].description,
+                image: getAllNewsApiServices.allNewsDataList[index].user.profileImg,);
+          },),
         ),
         floatingActionButton:   FloatingActionButtonWidget(
           onPressed: () {
@@ -61,5 +44,30 @@ class FeedScreen extends StatelessWidget {
 }
 
 
-
-
+// NewsCardWidget(
+// name: 'James FC',
+// description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
+// image: 'images/Frame.png',
+// time: '1 mint ago',
+// ),
+// Column(
+// children: [
+// SizedBox(height: 10,),
+//
+// SizedBox(height: 10,),
+// NewsCardWidget(
+// name: 'James FC',
+// description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
+// image: 'images/Frame.png',
+// time: '1 mint ago',
+// ),
+// SizedBox(height: 10,),
+// NewsCardWidget(
+// name: 'James FC',
+// description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
+// image: 'images/Frame.png',
+// time: '1 mint ago',
+// ),
+//
+// ],
+// )

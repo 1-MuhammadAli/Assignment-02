@@ -4,6 +4,7 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:assignment_no_2/constant.dart';
+import 'package:assignment_no_2/getallnews_apiservices.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,6 +20,7 @@ class AddNewsScreen extends StatelessWidget {
   final String userId = id;
   final String token1=token;
   final int leagueId = 31;
+  GetAllNewsApiServices getAllNewsApiServices=GetAllNewsApiServices();
 
   void addnews(String description, title, id, leagueId, matchId,token1) async {
 
@@ -27,7 +29,7 @@ class AddNewsScreen extends StatelessWidget {
           await post(Uri.parse('http://54.197.94.1/api/v1/news'),
               headers: {
             HttpHeaders.contentTypeHeader: "application/json",
-                "apitoken": "$token1"}, body: jsonEncode({
+                "apitoken": token1}, body: jsonEncode({
             'description': description,
             'title': title,
             'user_id': id,
@@ -40,10 +42,13 @@ class AddNewsScreen extends StatelessWidget {
       debugPrint(matchId);
       debugPrint(token1);
       if (response.statusCode == 200 || response.statusCode == 201) {
-        var data = jsonDecode(response.body.toString());
+        debugPrint('Ali');
+        var data = jsonDecode(response.body);
 
-        debugPrint(data);
-        debugPrint('Response successfully');
+        debugPrint(data.toString());
+
+
+
       } else {
         debugPrint('fail');
       }
@@ -85,6 +90,7 @@ class AddNewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    GetAllNewsApiServices getAllNewsApiServices=GetAllNewsApiServices();
     return Scaffold(
       backgroundColor: Color(0xff111820),
       appBar: AppBar(
@@ -207,6 +213,8 @@ class AddNewsScreen extends StatelessWidget {
                         matchid.toString(),
                       token1.toString()
                     );
+                    getAllNewsApiServices.getAllNewsData();
+                   //
                   },
                 ),
               )
