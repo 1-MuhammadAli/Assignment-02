@@ -1,6 +1,6 @@
 class GetAllNewsModel {
-   final String description;
-   final User user;
+    String description;
+    User user;
   GetAllNewsModel({
        required this.description,
        required this.user,});
@@ -14,8 +14,8 @@ class GetAllNewsModel {
 
 }
 class User {
-  final String firstName;
-  final String profileImg;
+   String firstName;
+   String? profileImg;
   User({
     required this.firstName,
     required this.profileImg,
@@ -23,7 +23,7 @@ class User {
   factory User.fromJson(Map<String, dynamic> json) {
    return User(
        firstName : json['first_name'],
-       profileImg : json['profile_img'],
+       profileImg : json['profile_img']??'',
    );
 
   }

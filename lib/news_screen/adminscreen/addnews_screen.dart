@@ -213,8 +213,7 @@ class AddNewsScreen extends StatelessWidget {
                         matchid.toString(),
                       token1.toString()
                     );
-                    getAllNewsApiServices.getAllNewsData();
-                   //
+                   // getAllNewsApiServices.getAllNewsData();
                   },
                 ),
               )

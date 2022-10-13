@@ -25,7 +25,7 @@ class MyFeedScreen extends StatelessWidget {
               NewsCardWidget(
                 name: 'James FC',
                 description: 'FIFA’s iconic competitions inspire billions of football fans and provide opportunities to have a wider positive social and environmental impact.By the global nature of the tournaments it ...',
-                image: 'images/Frame.png',
+                image: 'https://www.vecteezy.com/vector-art/9838950-abstract-cricket-world-cup-and-premier-league-logo-or-poster-design',
                // time: '1 mint ago',
               ),
               SizedBox(height: 10,),

@@ -16,15 +16,19 @@ class GetAllNewsApiServices{
   Future<List<GetAllNewsModel>> getAllNewsData() async {
     var response = await http.get(Uri.parse(url),headers: {
       HttpHeaders.contentTypeHeader: "application/json",
-      "apitoken": "$token1"},);
+      "apitoken": token1},);
+    var data=jsonDecode(response.body);
     if (response.statusCode == 200 || response.statusCode == 201) {
-      allNewsDataList.add(GetAllNewsModel.fromJson(jsonDecode(response.body)));
-      debugPrint('AABC');
+      for(Map<String,dynamic> i in data){
+        allNewsDataList.add(GetAllNewsModel.fromJson(i));
+      }
+      // debugPrint(allNewsDataList[5].description.toString());
+      // debugPrint('AABC');
       //isloaded = true;
       return allNewsDataList;
     } else {
       //isloaded = true;
-      debugPrint('fail');
+      // debugPrint('fail1223');
       return [];
     }
   }

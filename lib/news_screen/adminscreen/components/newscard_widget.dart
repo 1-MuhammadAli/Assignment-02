@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -39,15 +40,32 @@ class NewsCardWidget extends StatelessWidget {
               width: 40.0,
               height: 40.0,
               decoration: BoxDecoration(
-                color: Colors.black,
-                image: DecorationImage(
-                  image: AssetImage(image),
-                  fit: BoxFit.cover,
-                ),
+               // color: Colors.yellowAccent,
+                // image: DecorationImage(
+                //   image:NetworkImage(image),
+                //   fit: BoxFit.cover,
+                // ),
                 borderRadius: BorderRadius.all( Radius.circular(20.0)),
                 border: Border.all(
                   color: Colors.pinkAccent,
-                  width: 2.0,
+                  width: 1.0,
+                ),
+              ),
+              child: CachedNetworkImage(
+                imageUrl: image,
+                errorWidget: (context, url, error) => Image(image: NetworkImage('https://www.vecteezy.com/vector-art/9838950-abstract-cricket-world-cup-and-premier-league-logo-or-poster-design')),
+                placeholder: (context, url) => Container(
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    //color: Colors.yellowAccent,
+                    image: DecorationImage(
+                      image:NetworkImage('https://free-dxf.com/storage/resized/public/designs/pictures/GVGtp-800x800/5923.jpg'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.all( Radius.circular(20.0)),
+
+                  ),
                 ),
               ),
             ),
