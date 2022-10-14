@@ -1,17 +1,12 @@
-import 'dart:convert';
-
 import 'package:assignment_no_2/loginscreens/login_screen.dart';
 import 'package:assignment_no_2/loginscreens/components/passwordtextfield_widget.dart';
 import 'package:assignment_no_2/loginscreens/components/textformfield_widget.dart';
+import 'package:assignment_no_2/signup_apiservice.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
 import 'package:assignment_no_2/widgets/text_widget.dart';
 import 'package:assignment_no_2/loginscreens/components/underlinetext_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
-import 'package:http/http.dart';
-
-import '../constant.dart';
-
 class SignUpScreen extends StatelessWidget {
   SignUpScreen({Key? key}) : super(key: key);
   final formkey = GlobalKey<FormState>();
@@ -20,38 +15,10 @@ class SignUpScreen extends StatelessWidget {
   final emailController = TextEditingController();
   final passController = TextEditingController();
   final confirmPassController = TextEditingController();
-  void signup(
-    String name,
-    email,
-    password,
-    confirmPassword,
-  ) async {
-    try {
-      Response response =
-          await post(Uri.parse('http://54.197.94.1/api/v1/users'), body: {
-        'user[email]': email,
-        'user[first_name]': name,
-        'user[password]': password,
-        'user[password_confirmation]': confirmPassword,
-      });
-      debugPrint('response${response.body}');
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        var data = jsonDecode(response.body.toString());
-        navigatorKey.currentState!
-            .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
-        // debugPrint(data['api_token']);
-        // debugPrint('Account created successfully');
-        // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
-      } else {
-        debugPrint('fail');
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    SignUpApiService signUpApiServices=SignUpApiService();
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -155,7 +122,7 @@ class SignUpScreen extends StatelessWidget {
                     height: 48,
                     text: 'Sign Up',
                     onPress: () {
-                      signup(
+                      signUpApiServices.postSignUpData(
                         nameController.text.toString(),
                         emailController.text.toString(),
                         passController.text.toString(),

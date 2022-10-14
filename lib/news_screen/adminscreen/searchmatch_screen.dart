@@ -140,8 +140,3 @@ class MatchModel {
       required this.league,
       required this.match});
 }
-
-// Padding(
-// padding: const EdgeInsets.only(bottom: 10.0),
-// child: SearchMatchCardWidget(id: matchesList[index].id, image: matchesList[index].image, matchText: matchesList[index].league, teamText: matchesList[index].match,index: index,),
-// );

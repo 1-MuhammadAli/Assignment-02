@@ -53,11 +53,23 @@ class NewsCardWidget extends StatelessWidget {
               ),
               child: CachedNetworkImage(
                 imageUrl: image,
-                errorWidget: (context, url, error) => Image(image: NetworkImage('https://www.vecteezy.com/vector-art/9838950-abstract-cricket-world-cup-and-premier-league-logo-or-poster-design')),
+                errorWidget: (context, url, error) => Container(
+                    width: 40.0,
+                    height: 40.0,
+                    decoration: const BoxDecoration(
+                      //color: Colors.yellowAccent,
+                      image: DecorationImage(
+                        image:NetworkImage('https://img.freepik.com/free-vector/flower-wreath-drawing-blue-circle-frame-with-flowers_1305-4597.jpg?w=826&t=st=1665726842~exp=1665727442~hmac=238dc5b53d5c9560953d0bdd276606b867f0227e9eb7dac594b8def69b1de217'),
+                        fit: BoxFit.fill,
+                      ),
+                      borderRadius: BorderRadius.all( Radius.circular(20.0)),
+
+                    ),
+                    ),
                 placeholder: (context, url) => Container(
                   width: 40.0,
                   height: 40.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     //color: Colors.yellowAccent,
                     image: DecorationImage(
                       image:NetworkImage('https://free-dxf.com/storage/resized/public/designs/pictures/GVGtp-800x800/5923.jpg'),

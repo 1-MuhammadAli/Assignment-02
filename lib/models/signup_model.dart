@@ -1,4 +1,4 @@
-class UserModel {
+class SignUpModel {
   int? id;
   String? email;
   String? createdAt;
@@ -7,7 +7,7 @@ class UserModel {
   String? apiToken;
   String? notification;
 
-  UserModel(
+  SignUpModel(
       {this.id,
         this.email,
         this.createdAt,
@@ -16,7 +16,7 @@ class UserModel {
         this.apiToken,
         this.notification});
 
-  UserModel.fromJson(Map<String, dynamic> json) {
+  SignUpModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     email = json['email'];
     createdAt = json['created_at'];

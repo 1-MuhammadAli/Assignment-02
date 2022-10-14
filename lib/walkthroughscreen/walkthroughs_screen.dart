@@ -4,7 +4,6 @@ import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page3.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
 import 'package:assignment_no_2/walkthroughscreen/components/pageindicator_widget.dart';
 import 'package:flutter/material.dart';
-
 import '../loginscreens/login_screen.dart';
 
 class WalkthroughScreen extends StatefulWidget {

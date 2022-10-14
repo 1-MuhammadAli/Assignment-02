@@ -1,9 +1,4 @@
-
-import 'dart:convert';
-
-
 import 'package:assignment_no_2/news_screen/adminscreen/admin_screen.dart';
-import 'package:assignment_no_2/news_screen/news_screen.dart';
 import 'package:assignment_no_2/loginscreens/components/passwordtextfield_widget.dart';
 import 'package:assignment_no_2/loginscreens/components/textformfield_widget.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
@@ -12,12 +7,7 @@ import 'package:assignment_no_2/loginscreens/components/underlinetext_widget.dar
 import 'package:flutter/material.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import '../../news_screen/adminscreen/addnews_screen.dart';
 import '../user_apiservice.dart';
-import 'signup_screen.dart';
 import 'forgotpassword_screen.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -25,33 +15,6 @@ class LoginScreen extends StatelessWidget {
   final formkey=GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passController = TextEditingController();
-   // void login(String email,password, ) async {
-   //   try{
-   //     Response response= await post(
-   //         Uri.parse('http://54.197.94.1/api/v1/sessions'),
-   //         body: {
-   //           'email':email,
-   //           'password':password,
-   //         }
-   //     );
-   //     if(response.statusCode==200||response.statusCode==201){
-   //       var data=jsonDecode(response.body.toString());
-   //       // debugPrint(data['api_token']);
-   //       // debugPrint('Account created successfully');
-   //       SharedPreferences pref = await SharedPreferences.getInstance();
-   //       pref.setString('api_token', "");
-   //       //var id = pref.getString('id');
-   //       //debugPrint(id);
-   //
-   //     }
-   //     else{
-   //       debugPrint('fail');
-   //     }
-   //   }
-   //   catch(e){
-   //     debugPrint(e.toString());
-   //   }
-   // }
   @override
   Widget build(BuildContext context) {
     UserApiServices userApiServices=UserApiServices();
