@@ -1,3 +1,4 @@
+import 'package:assignment_no_2/loginscreens/signup_screen.dart';
 import 'package:assignment_no_2/news_screen/adminscreen/admin_screen.dart';
 import 'package:assignment_no_2/loginscreens/components/passwordtextfield_widget.dart';
 import 'package:assignment_no_2/loginscreens/components/textformfield_widget.dart';
@@ -131,7 +132,7 @@ class LoginScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => AdminScreen()),);
+                            MaterialPageRoute(builder: (context) => SignUpScreen()),);
                         },
                       )
                     ],

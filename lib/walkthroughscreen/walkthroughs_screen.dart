@@ -1,3 +1,4 @@
+import 'package:assignment_no_2/constant.dart';
 import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page1.dart';
 import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page2.dart';
 import 'package:assignment_no_2/walkthroughscreen/pages/walkthrough_page3.dart';
@@ -70,6 +71,7 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                 height: 48,
                 text: 'Get Started',
                 onPress: () {
+                  onBoarding=false;
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => LoginScreen()),);

@@ -28,18 +28,20 @@ class FeedScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Consumer<GetAllNewsApiServices>(
-                    builder: (context, snapshot,_) {
-                      if(snapshot.isloaded){
+                    builder: (context, provider,_) {
+                      if(provider.isloaded){
                         return ListView.builder(
-                          itemCount: snapshot.allNewsDataList.length,
-                          //itemCount: 3,
+                          itemCount: provider.allNewsDataList.length,
                           itemBuilder: (context, index) {
+                           // final r = provider.allNewsDataList[index];
+                           // print(provider.allNewsDataList.length);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 10.0,left: 15,right: 16),
                               child: NewsCardWidget(
-                                name: snapshot.allNewsDataList[index].user.firstName.toString(),
-                                description: snapshot.allNewsDataList[index].description,
-                                image: snapshot.allNewsDataList[index].user.profileImg.toString(),
+                                name: provider.allNewsDataList[index].user.firstName.toString(),
+                                description: provider.allNewsDataList[index].description,
+                                image: provider.allNewsDataList[index].user.profileImg.toString(),
+                                time: provider.allNewsDataList[index].createdAt.toString(),
                               ),
                             );
                           },

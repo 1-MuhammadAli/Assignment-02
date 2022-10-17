@@ -42,6 +42,7 @@ dependencies:
   shared_preferences: ^2.0.15
   cached_network_image:
   provider:
+  timeago:
 
 dev_dependencies:
   flutter_test:

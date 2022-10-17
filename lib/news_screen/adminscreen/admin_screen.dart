@@ -1,3 +1,5 @@
+import 'package:flutter/services.dart';
+
 import 'approvals_screen.dart';
 import 'feed_screen.dart';
 
@@ -29,8 +31,19 @@ class _AdminScreenState extends State<AdminScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+        ),
         backgroundColor: Colors.black,
         elevation: 0,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [Color(0xff171D27),Color(0xff1F2430), Color(0xff11181F)],
+              )),
+        ),
         //leading: Icon(Icons.menu,color: Colors.white,),
         title: SizedBox(
           height: 32,
@@ -70,7 +83,7 @@ class _AdminScreenState extends State<AdminScreen> {
                               width: 130,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Color(0xff434446),
+                                color: Color(0xff1B212E),
                                 //borderRadius: BorderRadius.circular(5),
                               ),
                               child: Center(
@@ -108,6 +121,8 @@ class _AdminScreenState extends State<AdminScreen> {
       );
   }
 }
+
+
 
 
 

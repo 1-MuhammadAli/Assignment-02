@@ -3,17 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-class NewsCardWidget extends StatelessWidget {
+class ApprovalCardWidget extends StatefulWidget {
   final String name;
   final String description;
   final String image;
   final String time;
-  const NewsCardWidget({
+  final int index;
+  const ApprovalCardWidget({
     Key? key,
     required this.name,required this.description,
-    required this.image,required this.time
+    required this.image,required this.time,required this.index
   }) : super(key: key);
 
+  @override
+  State<ApprovalCardWidget> createState() => _ApprovalCardWidgetState();
+}
+int? selectIndex;
+class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,12 +32,23 @@ class NewsCardWidget extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
+            padding: const EdgeInsets.only(left: 310.0,top: 80),
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  selectIndex = widget.index;
+                });
+              },
+                child: selectIndex==widget.index ?Icon(Icons.check_circle_outline,color: Colors.cyan,):Icon(Icons.circle_outlined,color: Colors.cyan,)),
+          ),
+
+          Padding(
             padding: const EdgeInsets.only(left: 260.0,top: 15),
-            child: Text(timeago.format(DateTime.parse(time)),
+            child: Text(timeago.format(DateTime.parse(widget.time)),
               style: GoogleFonts.openSans(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
-                  color: Colors.cyan
+                  color: Colors.yellow.shade700
               ),
             ),
           ),
@@ -41,7 +58,7 @@ class NewsCardWidget extends StatelessWidget {
               width: 40.0,
               height: 40.0,
               decoration: BoxDecoration(
-               // color: Colors.yellowAccent,
+                // color: Colors.yellowAccent,
                 // image: DecorationImage(
                 //   image:NetworkImage(image),
                 //   fit: BoxFit.cover,
@@ -53,20 +70,20 @@ class NewsCardWidget extends StatelessWidget {
                 ),
               ),
               child: CachedNetworkImage(
-                imageUrl: image,
+                imageUrl: widget.image,
                 errorWidget: (context, url, error) => Container(
-                    width: 40.0,
-                    height: 40.0,
-                    decoration: const BoxDecoration(
-                      //color: Colors.yellowAccent,
-                      image: DecorationImage(
-                        image:NetworkImage('https://img.freepik.com/free-vector/flower-wreath-drawing-blue-circle-frame-with-flowers_1305-4597.jpg?w=826&t=st=1665726842~exp=1665727442~hmac=238dc5b53d5c9560953d0bdd276606b867f0227e9eb7dac594b8def69b1de217'),
-                        fit: BoxFit.fill,
-                      ),
-                      borderRadius: BorderRadius.all( Radius.circular(20.0)),
+                  width: 40.0,
+                  height: 40.0,
+                  decoration: const BoxDecoration(
+                    //color: Colors.yellowAccent,
+                    image: DecorationImage(
+                      image:NetworkImage('https://img.freepik.com/free-vector/flower-wreath-drawing-blue-circle-frame-with-flowers_1305-4597.jpg?w=826&t=st=1665726842~exp=1665727442~hmac=238dc5b53d5c9560953d0bdd276606b867f0227e9eb7dac594b8def69b1de217'),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.all( Radius.circular(20.0)),
 
-                    ),
-                    ),
+                  ),
+                ),
                 placeholder: (context, url) => Container(
                   width: 40.0,
                   height: 40.0,
@@ -90,7 +107,7 @@ class NewsCardWidget extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 60.0),
-                  child: Text(name,style: GoogleFonts.openSans(
+                  child: Text(widget.name,style: GoogleFonts.openSans(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
                       color: Colors.white
@@ -103,7 +120,7 @@ class NewsCardWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 60.0),
                   child: SizedBox(
                     width: 272,
-                    child: Text(description,
+                    child: Text(widget.description,
                       style: GoogleFonts.openSans(
                           fontSize: 12,
                           fontWeight: FontWeight.w300,

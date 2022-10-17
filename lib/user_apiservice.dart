@@ -10,9 +10,11 @@ import 'loginscreens/login_screen.dart';
 import 'models/user_model.dart';
 import 'package:http/http.dart' as http;
 
+import 'news_screen/news_screen.dart';
+
 class UserApiServices {
   String url = 'http://54.197.94.1/api/v1/sessions';
-  Future<UserModel?> postUserData(String email, password) async {
+  void postUserData(String email, password) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     var response = await http.post(Uri.parse(url), body: {
       'email': email,
@@ -31,8 +33,7 @@ class UserApiServices {
       debugPrint(id);
       debugPrint(token);
       navigatorKey.currentState!
-          .pushReplacement(MaterialPageRoute(builder: (_) => AdminScreen()));
-      return userData;
+          .pushReplacement(MaterialPageRoute(builder: (_) => NewsScreen()));
     } else {
       throw Exception('error');
     }

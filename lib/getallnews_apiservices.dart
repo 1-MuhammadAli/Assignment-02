@@ -21,13 +21,13 @@ class GetAllNewsApiServices extends ChangeNotifier{
     var data=jsonDecode(response.body);
     if (response.statusCode == 200 || response.statusCode == 201) {
       for(Map<String,dynamic> i in data){
-        allNewsDataList.add(GetAllNewsModel.fromJson(i));
+        _allNewsDataList.add(GetAllNewsModel.fromJson(i));
       }
       // debugPrint(allNewsDataList[5].description.toString());
-      // debugPrint('AABC');
+
       isloaded = true;
       notifyListeners();
-      return allNewsDataList;
+      return _allNewsDataList;
     } else {
       isloaded = true;
       // debugPrint('fail1223');

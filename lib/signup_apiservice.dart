@@ -11,7 +11,7 @@ import 'loginscreens/login_screen.dart';
 import 'models/signup_model.dart';
 
 class SignUpApiService {
-  Future<SignUpModel?> postSignUpData(
+  void postSignUpData(
       String name,
       email,
       password,
@@ -33,7 +33,7 @@ class SignUpApiService {
         // debugPrint(data['api_token']);
         // debugPrint('Account created successfully');
         // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
-        return signUpData;
+        //return signUpData;
       } else {
         throw Exception('error');
       }

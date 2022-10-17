@@ -68,7 +68,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                       height: 48,
                       width: 327,
                       onPress: () {
-                    forgotPasswordApiService.forgotpasswordData(
+                    forgotPasswordApiService.forGotPasswordData(
                       emailController.text.toString(),
                     );
                         // Navigator.push(

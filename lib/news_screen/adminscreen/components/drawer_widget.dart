@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../widgets/text_widget.dart';
 import 'drawercard_wigdet.dart';
@@ -79,10 +80,16 @@ class DrawerWidget extends StatelessWidget {
             color: Color(0xffFFFFFF),
           ),
           SizedBox(height: 67,),
-          DrawerCardWidget(
-            image: 'images/logout1.png',
-            text: 'Logout',
-            color: Colors.deepOrangeAccent,
+          InkWell(
+            onTap: () async {
+              SharedPreferences preferences = await SharedPreferences.getInstance();
+              await preferences.clear();
+            },
+            child: DrawerCardWidget(
+              image: 'images/logout1.png',
+              text: 'Logout',
+              color: Colors.deepOrangeAccent,
+            ),
           ),
 
         ],

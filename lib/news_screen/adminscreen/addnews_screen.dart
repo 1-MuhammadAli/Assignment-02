@@ -3,8 +3,10 @@ import 'dart:core';
 import 'dart:core';
 import 'dart:io';
 
+import 'package:assignment_no_2/addnews_apiservices.dart';
 import 'package:assignment_no_2/constant.dart';
 import 'package:assignment_no_2/getallnews_apiservices.dart';
+import 'package:flutter/services.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,43 +22,7 @@ class AddNewsScreen extends StatelessWidget {
   final String userId = id;
   final String token1=token;
   final int leagueId = 31;
-  GetAllNewsApiServices getAllNewsApiServices=GetAllNewsApiServices();
-
-  void addnews(String description, title, id, leagueId, matchId,token1) async {
-
-    try {
-      Response response =
-          await post(Uri.parse('http://54.197.94.1/api/v1/news'),
-              headers: {
-            HttpHeaders.contentTypeHeader: "application/json",
-                "apitoken": token1}, body: jsonEncode({
-            'description': description,
-            'title': title,
-            'user_id': id,
-            'league_id': leagueId,
-            'match_id': matchId,
-          }));
-
-      debugPrint(response.body);
-      debugPrint(id);
-      debugPrint(matchId);
-      debugPrint(token1);
-      if (response.statusCode == 200 || response.statusCode == 201) {
-        debugPrint('Ali');
-        var data = jsonDecode(response.body);
-
-        debugPrint(data.toString());
-
-
-
-      } else {
-        debugPrint('fail');
-      }
-    } catch (e) {
-      debugPrint(e.toString());
-    }
-  }
-
+  AddNewsApiServices addNewsApiServices=AddNewsApiServices();
   void startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         isScrollControlled: true,
@@ -94,14 +60,18 @@ class AddNewsScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color(0xff111820),
       appBar: AppBar(
-        elevation: 5,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          //statusBarColor: Color(0xff171D27),
+          statusBarColor: Colors.transparent
+        ),
+        elevation: 0,
         title: Center(child: Text('Add News')),
         flexibleSpace: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xff1F2431), Color(0xff11181F)],
+            colors: [Color(0xff171D27),Color(0xff1F2430), Color(0xff11181F)],
           )),
         ),
       ),
@@ -205,7 +175,7 @@ class AddNewsScreen extends StatelessWidget {
                   height: 48,
                   width: 327,
                   onPress: () {
-                    addnews(
+                    addNewsApiServices.addnews(
                         desController.text.toString(),
                         titleController.text.toString(),
                         id.toString(),
@@ -213,7 +183,6 @@ class AddNewsScreen extends StatelessWidget {
                         matchid.toString(),
                       token1.toString()
                     );
-                   // getAllNewsApiServices.getAllNewsData();
                   },
                 ),
               )

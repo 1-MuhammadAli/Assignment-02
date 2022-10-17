@@ -1,4 +1,5 @@
 import 'package:assignment_no_2/getallnews_apiservices.dart';
+import 'package:assignment_no_2/splash_screen.dart';
 import 'package:assignment_no_2/user_apiservice.dart';
 import 'package:assignment_no_2/walkthroughscreen/walkthroughs_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => GetAllNewsApiServices(),)
         ],
         child: MaterialApp(
+          navigatorKey: navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(
             // This is the theme of your application.
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
             // is not restarted.
             primarySwatch: Colors.blue,
           ),
-          home: id == null ? AdminScreen() : WalkthroughScreen(),
+          home: SplashScreen(),
         ),
     );
   }
