@@ -2,7 +2,9 @@ import 'package:assignment_no_2/getallnews_apiservices.dart';
 import 'package:assignment_no_2/splash_screen.dart';
 import 'package:assignment_no_2/user_apiservice.dart';
 import 'package:assignment_no_2/walkthroughscreen/walkthroughs_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'constant.dart';
@@ -10,6 +12,10 @@ import 'news_screen/adminscreen/admin_screen.dart';
 
 late SharedPreferences preferences;
 void main() async {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown
+  ]);
   WidgetsFlutterBinding.ensureInitialized();
   preferences = await SharedPreferences.getInstance();
   id = preferences.getString('id');

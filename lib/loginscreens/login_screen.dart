@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   final passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     UserApiServices userApiServices=UserApiServices();
     return Scaffold(
       backgroundColor: Colors.black,
@@ -33,17 +34,24 @@ class LoginScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 58,),
+            SizedBox(height: screenSize.height*0.07
+            //58,
+            ),
             Container(
-              height: 116,
-              width: 116,
+              height: screenSize.height*0.14,
+              width: screenSize.width*0.3,
+              // height: 116,
+              // width: 116,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/Frame.png'),fit: BoxFit.fill
                 )
               ),
             ),
-            SizedBox(height: 51,),
+            SizedBox(height:
+            screenSize.height*0.06,
+              //51,
+            ),
             Form(
               key: formkey,
               child: Column(
@@ -52,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                     controller: emailController,
                     validator: ValidationBuilder().email().maxLength(50).build(),
                     label: 'Email', icon: Icons.email,textInputType: TextInputType.emailAddress,),
-                  SizedBox(height: 24,),
+                  SizedBox(height: screenSize.height*0.012,),
                   PasswordTextFieldWidget(controller: passController,text: 'Password',textInputAction: TextInputAction.done,
                     validator: (value) {
                       RegExp regex =
@@ -69,7 +77,12 @@ class LoginScreen extends StatelessWidget {
                     },
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 180.0,top: 16),
+                    padding:  EdgeInsets.only(
+                        left: screenSize.width*0.45,
+                        //180.0,
+                        top: screenSize.height*0.018
+                        //16
+                    ),
                     child: InkWell(
                       onTap: () {
                         Navigator.push(
@@ -89,7 +102,8 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 32,),
                   ButtonWidget(
-                    width: 327,
+                    width: screenSize.width*0.83,
+                    //327,
                     height: 48,
                     text: 'Sign In',
                     onPress: () {
@@ -112,9 +126,9 @@ class LoginScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset('images/ios.png'),
-                        SizedBox(width: 15,),
+                        SizedBox(width: screenSize.width*0.04,),
                         Image.asset('images/facebook.png'),
-                        SizedBox(width: 15,),
+                        SizedBox(width: screenSize.width*0.04,),
                         Image.asset('images/twitter.png'),
                       ],
                     ),

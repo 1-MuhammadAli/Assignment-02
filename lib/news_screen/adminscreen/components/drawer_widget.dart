@@ -1,3 +1,4 @@
+import 'package:assignment_no_2/loginscreens/login_screen.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -84,6 +85,7 @@ class DrawerWidget extends StatelessWidget {
             onTap: () async {
               SharedPreferences preferences = await SharedPreferences.getInstance();
               await preferences.clear();
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen(),), (route) => false);
             },
             child: DrawerCardWidget(
               image: 'images/logout1.png',

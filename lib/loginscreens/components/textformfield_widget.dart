@@ -16,10 +16,11 @@ class TextFormFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Center(
       child: Container(
         //padding: const EdgeInsets.only(left: 51.0, right: 51.0),
-        width: 327,
+        width: screenSize.width*0.83,
         height: 48.0,
 
         decoration: BoxDecoration(

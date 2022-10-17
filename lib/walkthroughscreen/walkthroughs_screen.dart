@@ -52,7 +52,10 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
               Container(
                 height: screenSize.height*0.1,
                 child: Padding(
-                  padding: const EdgeInsets.only(bottom: 20.0),
+                  padding:  EdgeInsets.only(bottom:
+                  screenSize.height*0.02
+                  //20.0
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -67,8 +70,10 @@ class _WalkthroughScreenState extends State<WalkthroughScreen> {
                 ),
               ),
               ButtonWidget(
-                width: 218,
-                height: 48,
+                width: screenSize.width*0.6,
+                height: screenSize.height*0.06,
+                // width: 218,
+                // height: 48,
                 text: 'Get Started',
                 onPress: () {
                   onBoarding=false;
