@@ -50,8 +50,10 @@ class _SearchMatchScreenState extends State<SearchMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Container(
-      height: 750,
+      height: screenSize.height*0.75,
+      //height: 750,
       width: double.infinity,
       decoration: BoxDecoration(
           color: Color(0xff1E232F),
@@ -71,7 +73,8 @@ class _SearchMatchScreenState extends State<SearchMatchScreen> {
             height: 63,
           ),
           Container(
-            height: 616,
+            height: screenSize.height*0.63,
+            //height: 616,
             color: Color(0xff1E232F),
             child: ListView.builder(
               scrollDirection: Axis.vertical,
