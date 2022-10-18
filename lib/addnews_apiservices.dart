@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:assignment_no_2/getallnews_apiservices.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -10,6 +11,7 @@ import 'constant.dart';
 import 'news_screen/news_screen.dart';
 
 class AddNewsApiServices{
+  GetAllNewsApiServices getAllNewsApiServices=GetAllNewsApiServices();
   Future addnews(String description, title, id, leagueId, matchId,token1) async {
 
     try {
@@ -35,8 +37,7 @@ class AddNewsApiServices{
         navigatorKey.currentState!
             .pushReplacement(MaterialPageRoute(builder: (_) => NewsScreen()));
         debugPrint(data.toString());
-
-
+        getAllNewsApiServices.getAllNewsData();
 
       } else {
         debugPrint('fail');

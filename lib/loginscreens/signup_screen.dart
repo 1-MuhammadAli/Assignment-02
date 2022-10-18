@@ -20,141 +20,144 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize=MediaQuery.of(context).size;
     SignUpApiService signUpApiServices=SignUpApiService();
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
         backgroundColor: Colors.black,
-        centerTitle: true,
-        title: TextWidget(
-          text: 'Sign Up',
-          fontWeight: FontWeight.w400,
-          textSize: 16,
-          color: Color(0xffFFFFFF),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: TextWidget(
+            text: 'Sign Up',
+            fontWeight: FontWeight.w400,
+            textSize: 16,
+            color: Color(0xffFFFFFF),
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: screenSize.height*0.07),
-            Container(
-              height: screenSize.height*0.14,
-              width: screenSize.width*0.3,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/Frame.png'), fit: BoxFit.fill)),
-            ),
-            SizedBox(
-              height:screenSize.height*0.06,
-            ),
-            Form(
-              key: formkey,
-              child: Column(
-                children: [
-                  TextFormFieldWidget(
-                    controller: nameController,
-                    validator: (value) {
-                      if (value!.isEmpty ||
-                          !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
-                        return 'Enter correct name';
-                      } else {
-                        return null;
-                      }
-                    },
-                    label: 'Full Name',
-                    icon: Icons.person,
-                    textInputType: TextInputType.name,
-                  ),
-                  SizedBox(
-                    height: screenSize.height*0.028,
-                  ),
-                  TextFormFieldWidget(
-                    controller: emailController,
-                    validator:
-                        ValidationBuilder().email().maxLength(50).build(),
-                    label: 'Email',
-                    icon: Icons.email,
-                    textInputType: TextInputType.emailAddress,
-                  ),
-                  SizedBox(
-                    height: screenSize.height*0.028,
-                  ),
-                  PasswordTextFieldWidget(
-                    controller: passController,
-                    text: 'Password',
-                    textInputAction: TextInputAction.next,
-                    validator: (value) {
-                      RegExp regex = RegExp(
-                          r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                      if (value!.isEmpty) {
-                        return 'Please enter password';
-                      } else {
-                        if (!regex.hasMatch(value)) {
-                          return 'Enter valid password';
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: screenSize.height*0.07),
+              Container(
+                height: screenSize.height*0.14,
+                width: screenSize.width*0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('images/Frame.png'), fit: BoxFit.fill)),
+              ),
+              SizedBox(
+                height:screenSize.height*0.06,
+              ),
+              Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    TextFormFieldWidget(
+                      controller: nameController,
+                      validator: (value) {
+                        if (value!.isEmpty ||
+                            !RegExp(r'^[a-z A-Z]+$').hasMatch(value)) {
+                          return 'Enter correct name';
                         } else {
                           return null;
                         }
-                      }
-                    },
-                  ),
-                  SizedBox(
-                    height: screenSize.height*0.028,
-                  ),
-                  PasswordTextFieldWidget(
-                    controller: confirmPassController,
-                    text: 'ConfirmPassword',
-                    textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      // RegExp regex =
-                      // RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                      if (passController.text == confirmPassController.text) {
-                        return null;
-                      } else {
-                        return 'Please enter same password';
-                      }
-                    },
-                  ),
-                  SizedBox(
-                    height: screenSize.height*0.035,
-                  ),
-                  ButtonWidget(
-                    width: screenSize.width*0.83,
-                    height: screenSize.height*0.058,
-                    text: 'Sign Up',
-                    onPress: () {
-                      signUpApiServices.postSignUpData(
-                        nameController.text.toString(),
-                        emailController.text.toString(),
-                        passController.text.toString(),
-                        confirmPassController.text.toString(),
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: screenSize.height*0.12,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextWidget(
-                          text: 'Do you have an account ?  ',
-                          fontWeight: FontWeight.w400,
-                          textSize: 14,
-                          color: Color(0xffFFFFFF)),
-                      UnderLineTextWidget(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LoginScreen()),
-                            );
-                          },
-                          text: 'Sign In')
-                    ],
-                  )
-                ],
+                      },
+                      label: 'Full Name',
+                      icon: Icons.person,
+                      textInputType: TextInputType.name,
+                    ),
+                    SizedBox(
+                      height: screenSize.height*0.028,
+                    ),
+                    TextFormFieldWidget(
+                      controller: emailController,
+                      validator:
+                          ValidationBuilder().email().maxLength(50).build(),
+                      label: 'Email',
+                      icon: Icons.email,
+                      textInputType: TextInputType.emailAddress,
+                    ),
+                    SizedBox(
+                      height: screenSize.height*0.028,
+                    ),
+                    PasswordTextFieldWidget(
+                      controller: passController,
+                      text: 'Password',
+                      textInputAction: TextInputAction.next,
+                      validator: (value) {
+                        RegExp regex = RegExp(
+                            r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if (value!.isEmpty) {
+                          return 'Please enter password';
+                        } else {
+                          if (!regex.hasMatch(value)) {
+                            return 'Enter valid password';
+                          } else {
+                            return null;
+                          }
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: screenSize.height*0.028,
+                    ),
+                    PasswordTextFieldWidget(
+                      controller: confirmPassController,
+                      text: 'ConfirmPassword',
+                      textInputAction: TextInputAction.done,
+                      validator: (value) {
+                        // RegExp regex =
+                        // RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if (passController.text == confirmPassController.text) {
+                          return null;
+                        } else {
+                          return 'Please enter same password';
+                        }
+                      },
+                    ),
+                    SizedBox(
+                      height: screenSize.height*0.035,
+                    ),
+                    ButtonWidget(
+                      width: screenSize.width*0.83,
+                      height: screenSize.height*0.058,
+                      text: 'Sign Up',
+                      onPress: () {
+                        signUpApiServices.postSignUpData(
+                          nameController.text.toString(),
+                          emailController.text.toString(),
+                          passController.text.toString(),
+                          confirmPassController.text.toString(),
+                        );
+                      },
+                    ),
+                    SizedBox(
+                      height: screenSize.height*0.12,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(
+                            text: 'Do you have an account ?  ',
+                            fontWeight: FontWeight.w400,
+                            textSize: 14,
+                            color: Color(0xffFFFFFF)),
+                        UnderLineTextWidget(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
+                            },
+                            text: 'Sign In')
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -52,8 +52,8 @@ class _SearchMatchScreenState extends State<SearchMatchScreen> {
   Widget build(BuildContext context) {
     var screenSize=MediaQuery.of(context).size;
     return Container(
-      height: screenSize.height*0.75,
-      //height: 750,
+      //height: screenSize.height*0.5,
+      height: 600,
       width: double.infinity,
       decoration: BoxDecoration(
           color: Color(0xff1E232F),

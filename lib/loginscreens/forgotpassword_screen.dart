@@ -16,93 +16,96 @@ class ForgotPasswordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize=MediaQuery.of(context).size;
     ForgotPasswordApiService forgotPasswordApiService=ForgotPasswordApiService();
-    return  Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return  GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
         backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text('Forgot Password',
-          style: GoogleFonts.openSans(
-            textStyle: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: Text('Forgot Password',
+            style: GoogleFonts.openSans(
+              textStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w400
+              ),
             ),
           ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: screenSize.height*0.07,),
-            Container(
-              height: screenSize.height*0.14,
-              width: screenSize.width*0.3,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/Frame.png'),fit: BoxFit.fill
-                  )
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: screenSize.height*0.07,),
+              Container(
+                height: screenSize.height*0.14,
+                width: screenSize.width*0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('images/Frame.png'),fit: BoxFit.fill
+                    )
+                ),
               ),
-            ),
-            SizedBox(height: screenSize.height*0.06,),
-            Padding(
-              padding:  EdgeInsets.only(top: screenSize.height*0.015,bottom: screenSize.height*0.045),
-              child: SizedBox(
-                width: screenSize.width*0.8,
-                height: screenSize.height*0.058,
-                child: TextWidget(text: 'Enter your email or phone number to retrieve your password.',
-                    fontWeight: FontWeight.w400,
-                    textSize: 16,
-                    color: Color(0xffFFFFFF)),
+              SizedBox(height: screenSize.height*0.06,),
+              Padding(
+                padding:  EdgeInsets.only(top: screenSize.height*0.015,bottom: screenSize.height*0.045),
+                child: SizedBox(
+                  width: screenSize.width*0.8,
+                  height: screenSize.height*0.058,
+                  child: TextWidget(text: 'Enter your email or phone number to retrieve your password.',
+                      fontWeight: FontWeight.w400,
+                      textSize: 16,
+                      color: Color(0xffFFFFFF)),
+                ),
               ),
-            ),
-            Form(
-              key: formkey,
-              child: Column(
-                children: [
-                  TextFormFieldWidget(
-                    controller: emailController,
-                    validator: ValidationBuilder().email().maxLength(50).build(),
-                    label: 'Email or Phone Number', icon: Icons.email,textInputType: TextInputType.emailAddress,),
-                  SizedBox(height: screenSize.height*0.04,),
+              Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    TextFormFieldWidget(
+                      controller: emailController,
+                      validator: ValidationBuilder().email().maxLength(50).build(),
+                      label: 'Email or Phone Number', icon: Icons.email,textInputType: TextInputType.emailAddress,),
+                    SizedBox(height: screenSize.height*0.04,),
 
 
-                  ButtonWidget(text: 'Reset Password',
-                    width: screenSize.width*0.83,
-                    //327,
-                    height: screenSize.height*0.058,
-                    //48,
-                      onPress: () {
-                    forgotPasswordApiService.forGotPasswordData(
-                      emailController.text.toString(),
+                    ButtonWidget(text: 'Reset Password',
+                      width: screenSize.width*0.83,
+                      //327,
+                      height: screenSize.height*0.058,
+                      //48,
+                        onPress: () {
+                      forgotPasswordApiService.forGotPasswordData(
+                        emailController.text.toString(),
 
-                    );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ResetPasswordScreen()),);
-                      },),
-                  SizedBox(height: screenSize.height*0.24,),
+                      );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ResetPasswordScreen()),);
+                        },),
+                    SizedBox(height: screenSize.height*0.24,),
 
 
 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextWidget(text: 'Don’t have an account ?  ',
-                          fontWeight: FontWeight.w400,
-                          textSize: 14,
-                          color: Color(0xffFFFFFF)),
-                      UnderLineTextWidget(onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => SignUpScreen()),);
-                      }, text: 'Sign Up')
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(text: 'Don’t have an account ?  ',
+                            fontWeight: FontWeight.w400,
+                            textSize: 14,
+                            color: Color(0xffFFFFFF)),
+                        UnderLineTextWidget(onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => SignUpScreen()),);
+                        }, text: 'Sign Up')
 
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

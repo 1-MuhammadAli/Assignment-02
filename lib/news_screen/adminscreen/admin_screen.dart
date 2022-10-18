@@ -66,7 +66,7 @@ class _AdminScreenState extends State<AdminScreen> {
             children: [
               SizedBox(
                 width: double.infinity,
-                height: screenSize.height*0.052,
+                 height: screenSize.height*0.0559,
                 //height: 42.5,
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
@@ -84,9 +84,9 @@ class _AdminScreenState extends State<AdminScreen> {
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
                               margin: const EdgeInsets.only(left: 1),
-                              width: screenSize.width*0.33,
+                                width: screenSize.width*0.33,
 
-                             // width: 130,
+                             //width: 130,
                               height: 40,
                               decoration: BoxDecoration(
                                 color: Color(0xff1B212E),
@@ -108,7 +108,7 @@ class _AdminScreenState extends State<AdminScreen> {
                                 width: screenSize.width*0.33,
                                 height: screenSize.height*0.0025,
                                 // width: 130,
-                                // height: 2.5,
+                                //  height: 2.5,
                                 decoration: const BoxDecoration(
                                   color: Colors.pinkAccent,
                                   //shape: BoxShape.circle
@@ -119,9 +119,9 @@ class _AdminScreenState extends State<AdminScreen> {
                     }),
               ),
               Container(
-                height: screenSize.height*0.77,
-                //  height:
-                //  598.6,
+                 height: screenSize.height*0.74,
+                 // height:
+                 // 598.6,
                 width: double.infinity,
                 child: screens[current],
               ),

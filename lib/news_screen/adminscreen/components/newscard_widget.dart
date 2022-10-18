@@ -28,7 +28,9 @@ class NewsCardWidget extends StatelessWidget {
       child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 260.0,top: 15),
+            padding:  EdgeInsets.only(
+                left: screenSize.width*0.67,
+                top: 15),
             child: Text(timeago.format(DateTime.parse(time)),
               style: GoogleFonts.openSans(
                   fontSize: 12,
@@ -38,10 +40,10 @@ class NewsCardWidget extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10.0,top: 15),
+            padding:  EdgeInsets.only(left: screenSize.width*0.025,top: 15),
             child:  Container(
               //width: 40.0,
-              width: screenSize.width*0.1,
+              width: screenSize.width*0.11,
               height: 40.0,
               decoration: BoxDecoration(
                // color: Colors.yellowAccent,
@@ -59,7 +61,7 @@ class NewsCardWidget extends StatelessWidget {
                 imageUrl: image,
                 errorWidget: (context, url, error) => Container(
                    // width: 40.0,
-                  width: screenSize.width*0.1,
+                  width: screenSize.width*0.11,
                     height: 40.0,
                     decoration: const BoxDecoration(
                       //color: Colors.yellowAccent,
@@ -73,7 +75,7 @@ class NewsCardWidget extends StatelessWidget {
                     ),
                 placeholder: (context, url) => Container(
                   //width: 40.0,
-                  width: screenSize.width*0.1,
+                  width: screenSize.width*0.11,
                   height: 40.0,
                   decoration: const BoxDecoration(
                     //color: Colors.yellowAccent,
@@ -94,7 +96,7 @@ class NewsCardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 60.0),
+                  padding:  EdgeInsets.only(left: screenSize.width*0.17 ),
                   child: Text(name,style: GoogleFonts.openSans(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -105,7 +107,7 @@ class NewsCardWidget extends StatelessWidget {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 60.0),
+                  padding:  EdgeInsets.only(left: screenSize.width*0.17),
                   child: SizedBox(
                     width: screenSize.width*0.72,
                     //width: 272,

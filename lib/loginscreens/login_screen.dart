@@ -20,145 +20,148 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     var screenSize=MediaQuery.of(context).size;
     UserApiServices userApiServices=UserApiServices();
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).requestFocus(FocusNode()),
+      child: Scaffold(
         backgroundColor: Colors.black,
-        centerTitle: true,
-        title: TextWidget(
-          text: 'Sign In',
-          fontWeight: FontWeight.w400,
-          textSize: 16, color: Color(0xffFFFFFF),
+        appBar: AppBar(
+          backgroundColor: Colors.black,
+          centerTitle: true,
+          title: TextWidget(
+            text: 'Sign In',
+            fontWeight: FontWeight.w400,
+            textSize: 16, color: Color(0xffFFFFFF),
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: screenSize.height*0.07
-            //58,
-            ),
-            Container(
-              height: screenSize.height*0.14,
-              width: screenSize.width*0.3,
-              // height: 116,
-              // width: 116,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/Frame.png'),fit: BoxFit.fill
-                )
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: screenSize.height*0.07
+              //58,
               ),
-            ),
-            SizedBox(height:
-            screenSize.height*0.06,
-              //51,
-            ),
-            Form(
-              key: formkey,
-              child: Column(
-                children: [
-                  TextFormFieldWidget(
-                    controller: emailController,
-                    validator: ValidationBuilder().email().maxLength(50).build(),
-                    label: 'Email', icon: Icons.email,textInputType: TextInputType.emailAddress,),
-                  SizedBox(height: screenSize.height*0.012,),
-                  PasswordTextFieldWidget(controller: passController,text: 'Password',textInputAction: TextInputAction.done,
-                    validator: (value) {
-                      RegExp regex =
-                      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                      if (value!.isEmpty) {
-                        return 'Please enter password';
-                      } else {
-                        if (!regex.hasMatch(value)) {
-                          return 'Enter valid password';
+              Container(
+                height: screenSize.height*0.14,
+                width: screenSize.width*0.3,
+                // height: 116,
+                // width: 116,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/Frame.png'),fit: BoxFit.fill
+                  )
+                ),
+              ),
+              SizedBox(height:
+              screenSize.height*0.06,
+                //51,
+              ),
+              Form(
+                key: formkey,
+                child: Column(
+                  children: [
+                    TextFormFieldWidget(
+                      controller: emailController,
+                      validator: ValidationBuilder().email().maxLength(50).build(),
+                      label: 'Email', icon: Icons.email,textInputType: TextInputType.emailAddress,),
+                    SizedBox(height: screenSize.height*0.012,),
+                    PasswordTextFieldWidget(controller: passController,text: 'Password',textInputAction: TextInputAction.done,
+                      validator: (value) {
+                        RegExp regex =
+                        RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+                        if (value!.isEmpty) {
+                          return 'Please enter password';
                         } else {
-                          return null;
+                          if (!regex.hasMatch(value)) {
+                            return 'Enter valid password';
+                          } else {
+                            return null;
+                          }
                         }
-                      }
-                    },
-                  ),
-                  Padding(
-                    padding:  EdgeInsets.only(
-                        left: screenSize.width*0.45,
-                        //180.0,
-                        top: screenSize.height*0.018
-                        //16
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),);
                       },
-                      child: Text('Forgot Password ?',
-                      style: GoogleFonts.openSans(
-                        textStyle: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xffFFFFFF)
-                        )
-                      ),
-                      ),
                     ),
-                  ),
-                  SizedBox(height:
-                  screenSize.height*0.035
-                  //32,
-                  ),
-                  ButtonWidget(
-                    width: screenSize.width*0.83,
-                    //327,
-                    height: screenSize.height*0.058,
-                    //48,
-                    text: 'Sign In',
-                    onPress: () {
-                      userApiServices.postUserData(emailController.text.toString(),
-                        passController.text.toString(),
-                      );
-
-                    },
-                  ),
-                  SizedBox(height: screenSize.height*0.058,),
-                  Center(
-                    child: TextWidget(text: 'Or by social accounts',
-                        fontWeight: FontWeight.w400,
-                        textSize: 14, color: Color(0xffFFFFFF)),
-                  ),
-                  SizedBox(height: screenSize.height*0.025,),
-
-                  Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset('images/ios.png'),
-                        SizedBox(width: screenSize.width*0.04,),
-                        Image.asset('images/facebook.png'),
-                        SizedBox(width: screenSize.width*0.04,),
-                        Image.asset('images/twitter.png'),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: screenSize.height*0.095,),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      TextWidget(text: 'Don’t have an account ?  ',
-                          fontWeight: FontWeight.w400,
-                          textSize: 14,
-                          color: Color(0xffFFFFFF)),
-                      UnderLineTextWidget(
-                        text: 'Sign Up',
+                    Padding(
+                      padding:  EdgeInsets.only(
+                          left: screenSize.width*0.45,
+                          //180.0,
+                          top: screenSize.height*0.018
+                          //16
+                      ),
+                      child: InkWell(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => SignUpScreen()),);
+                            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),);
                         },
-                      )
-                    ],
-                  )
-                ],
+                        child: Text('Forgot Password ?',
+                        style: GoogleFonts.openSans(
+                          textStyle: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xffFFFFFF)
+                          )
+                        ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height:
+                    screenSize.height*0.035
+                    //32,
+                    ),
+                    ButtonWidget(
+                      width: screenSize.width*0.83,
+                      //327,
+                      height: screenSize.height*0.058,
+                      //48,
+                      text: 'Sign In',
+                      onPress: () {
+                        userApiServices.postUserData(emailController.text.toString(),
+                          passController.text.toString(),
+                        );
+
+                      },
+                    ),
+                    SizedBox(height: screenSize.height*0.058,),
+                    Center(
+                      child: TextWidget(text: 'Or by social accounts',
+                          fontWeight: FontWeight.w400,
+                          textSize: 14, color: Color(0xffFFFFFF)),
+                    ),
+                    SizedBox(height: screenSize.height*0.025,),
+
+                    Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset('images/ios.png'),
+                          SizedBox(width: screenSize.width*0.04,),
+                          Image.asset('images/facebook.png'),
+                          SizedBox(width: screenSize.width*0.04,),
+                          Image.asset('images/twitter.png'),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: screenSize.height*0.095,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextWidget(text: 'Don’t have an account ?  ',
+                            fontWeight: FontWeight.w400,
+                            textSize: 14,
+                            color: Color(0xffFFFFFF)),
+                        UnderLineTextWidget(
+                          text: 'Sign Up',
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SignUpScreen()),);
+                          },
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

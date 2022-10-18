@@ -16,7 +16,7 @@ class ApprovalsScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Container(
-            height: screenSize.height*0.77,
+            height: screenSize.height*0.74,
             //height: 598.6,
             width: double.infinity,
             decoration: BoxDecoration(

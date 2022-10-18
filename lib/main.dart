@@ -12,11 +12,12 @@ import 'news_screen/adminscreen/admin_screen.dart';
 
 late SharedPreferences preferences;
 void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
   ]);
-  WidgetsFlutterBinding.ensureInitialized();
   preferences = await SharedPreferences.getInstance();
   id = preferences.getString('id');
   token=preferences.getString('api_token');
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => GetAllNewsApiServices(),)
         ],
         child: MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: navigatorKey,
           title: 'Flutter Demo',
           theme: ThemeData(

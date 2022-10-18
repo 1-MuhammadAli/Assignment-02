@@ -22,8 +22,9 @@ int? selectIndex;
 class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Container(
-      width: 344,
+      width: screenSize.width*0.88,
       height: 150,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
@@ -32,7 +33,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
       child: Stack(
         children: [
           Padding(
-            padding: const EdgeInsets.only(left: 310.0,top: 80),
+            padding:  EdgeInsets.only(left: screenSize.width*0.8,top: 80),
             child: InkWell(
               onTap: () {
                 setState(() {
@@ -43,7 +44,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
           ),
 
           Padding(
-            padding: const EdgeInsets.only(left: 260.0,top: 15),
+            padding:  EdgeInsets.only(left: screenSize.width*0.67,top: 15),
             child: Text(timeago.format(DateTime.parse(widget.time)),
               style: GoogleFonts.openSans(
                   fontSize: 12,
@@ -53,9 +54,9 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 10.0,top: 15),
+            padding:  EdgeInsets.only(left: screenSize.width*0.025,top: 15),
             child:  Container(
-              width: 40.0,
+              width: screenSize.width*0.11,
               height: 40.0,
               decoration: BoxDecoration(
                 // color: Colors.yellowAccent,
@@ -72,7 +73,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
               child: CachedNetworkImage(
                 imageUrl: widget.image,
                 errorWidget: (context, url, error) => Container(
-                  width: 40.0,
+                  width: screenSize.width*0.11,
                   height: 40.0,
                   decoration: const BoxDecoration(
                     //color: Colors.yellowAccent,
@@ -85,7 +86,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
                   ),
                 ),
                 placeholder: (context, url) => Container(
-                  width: 40.0,
+                  width: screenSize.width*0.11,
                   height: 40.0,
                   decoration: const BoxDecoration(
                     //color: Colors.yellowAccent,
@@ -106,7 +107,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 60.0),
+                  padding:  EdgeInsets.only(left: screenSize.width*0.17),
                   child: Text(widget.name,style: GoogleFonts.openSans(
                       fontWeight: FontWeight.w400,
                       fontSize: 16,
@@ -117,9 +118,9 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 60.0),
+                  padding:  EdgeInsets.only(left: screenSize.width*0.17),
                   child: SizedBox(
-                    width: 272,
+                    width: screenSize.width*0.72,
                     child: Text(widget.description,
                       style: GoogleFonts.openSans(
                           fontSize: 12,

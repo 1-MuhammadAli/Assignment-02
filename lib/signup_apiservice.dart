@@ -34,6 +34,8 @@ class SignUpApiService {
         // debugPrint('Account created successfully');
         // Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()),);
         //return signUpData;
+        navigatorKey.currentState!
+            .pushReplacement(MaterialPageRoute(builder: (_) => LoginScreen()));
       } else {
         throw Exception('error');
       }

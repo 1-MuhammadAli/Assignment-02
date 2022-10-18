@@ -1,5 +1,4 @@
 
-import 'package:assignment_no_2/loginscreens/forgotpassword_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'adminscreen/admin_screen.dart';
