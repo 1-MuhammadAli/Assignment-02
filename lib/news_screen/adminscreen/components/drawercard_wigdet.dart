@@ -24,7 +24,7 @@ class DrawerCardWidget extends StatelessWidget {
             TextWidget(text: text,
                 fontWeight: FontWeight.w400,
                 textSize: 16,
-                color: color)
+                color: color),
           ],
         ),
       ),

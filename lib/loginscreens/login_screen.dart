@@ -116,7 +116,12 @@ class LoginScreen extends StatelessWidget {
                         userApiServices.postUserData(emailController.text.toString(),
                           passController.text.toString(),
                         );
-
+                        if(formkey.currentState!.validate()){
+                          // print(nameController.text);
+                          // print(emailController.text);
+                          // print(numController.text);
+                          // print(passController.text);
+                        }
                       },
                     ),
                     SizedBox(height: screenSize.height*0.058,),

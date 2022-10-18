@@ -102,7 +102,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: screenSize.height*0.03,),
-                    PasswordTextFieldWidget(controller: confirmPassController,text: 'ConfirmPassword', textInputAction: TextInputAction.done,
+                    PasswordTextFieldWidget(controller: confirmPassController,text: 'Confirm Password', textInputAction: TextInputAction.done,
                       validator: (value) {
                         // RegExp regex =
                         // RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
@@ -123,6 +123,12 @@ class ResetPasswordScreen extends StatelessWidget {
                       //48,
                         onPress: () {
                       resetpassword(passController.text.toString(),confirmPassController.text.toString());
+                      if(formkey.currentState!.validate()){
+                        // print(nameController.text);
+                        // print(emailController.text);
+                        // print(numController.text);
+                        // print(passController.text);
+                      }
                           // Navigator.push(
                           //   context,
                           //   MaterialPageRoute(builder: (context) => LoginScreen()),);

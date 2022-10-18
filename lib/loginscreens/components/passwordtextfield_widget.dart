@@ -31,14 +31,21 @@ class _PasswordTextFieldWidgetState extends State<PasswordTextFieldWidget> {
           obscureText: isPasswordVisible,
           textInputAction: widget.textInputAction,
           decoration: InputDecoration(
-            label: Text(widget.text),
-            labelStyle: GoogleFonts.openSans(
-              textStyle: TextStyle(
-                fontSize: 14,
+            //label: Text(widget.text),
+            hintText: widget.text,
+            hintStyle: TextStyle(
                 fontWeight: FontWeight.w400,
-                color: Colors.white
-              )
+                fontSize: 14,
+                color: Colors.white,
+                fontFamily: 'OpenSans'
             ),
+            // labelStyle: GoogleFonts.openSans(
+            //   textStyle: TextStyle(
+            //     fontSize: 14,
+            //     fontWeight: FontWeight.w400,
+            //     color: Colors.white
+            //   )
+            // ),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,
             enabledBorder: InputBorder.none,

@@ -21,7 +21,7 @@ class TextFormFieldWidget extends StatelessWidget {
       child: Container(
         //padding: const EdgeInsets.only(left: 51.0, right: 51.0),
         width: screenSize.width*0.83,
-        height: screenSize.height*0.058,
+        height: screenSize.height*0.065,
 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
@@ -32,13 +32,20 @@ class TextFormFieldWidget extends StatelessWidget {
           controller: controller,
           validator: (value) => validator(value),
           decoration: InputDecoration(
-            label: Text(label,style: GoogleFonts.openSans(
-              textStyle: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-              )
-            ),),
+            hintText: label,
+            hintStyle: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 14,
+              color: Colors.white,
+              fontFamily: 'OpenSans'
+            ),
+            // Text(label,style: GoogleFonts.openSans(
+            //   textStyle: TextStyle(
+            //     color: Colors.white,
+            //     fontWeight: FontWeight.w400,
+            //     fontSize: 14,
+            //   )
+            // ),),
             prefixIcon: Icon(icon,color:Colors.white,),
             border: InputBorder.none,
             focusedBorder: InputBorder.none,

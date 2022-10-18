@@ -103,7 +103,7 @@ class SignUpScreen extends StatelessWidget {
                     ),
                     PasswordTextFieldWidget(
                       controller: confirmPassController,
-                      text: 'ConfirmPassword',
+                      text: 'Confirm Password',
                       textInputAction: TextInputAction.done,
                       validator: (value) {
                         // RegExp regex =
@@ -129,6 +129,12 @@ class SignUpScreen extends StatelessWidget {
                           passController.text.toString(),
                           confirmPassController.text.toString(),
                         );
+                        if(formkey.currentState!.validate()){
+                          // print(nameController.text);
+                          // print(emailController.text);
+                          // print(numController.text);
+                          // print(passController.text);
+                        }
                       },
                     ),
                     SizedBox(

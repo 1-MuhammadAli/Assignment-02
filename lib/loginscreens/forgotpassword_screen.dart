@@ -78,6 +78,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                         emailController.text.toString(),
 
                       );
+                      if(formkey.currentState!.validate()){
+                        // print(nameController.text);
+                        // print(emailController.text);
+                        // print(numController.text);
+                        // print(passController.text);
+                      }
                           Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => ResetPasswordScreen()),);
