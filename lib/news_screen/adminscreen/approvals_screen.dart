@@ -12,10 +12,12 @@ class ApprovalsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         body: Container(
-            height: 598.6,
+            height: screenSize.height*0.77,
+            //height: 598.6,
             width: double.infinity,
             decoration: BoxDecoration(
                 image: DecorationImage(
@@ -24,7 +26,9 @@ class ApprovalsScreen extends StatelessWidget {
                 )
             ),
             child: Padding(
-              padding: const EdgeInsets.only(top: 20.0),
+              padding:  EdgeInsets.only(top: screenSize.height*0.024
+              //20.0
+              ),
               child: Consumer<GetAllNewsApiServices>(
                   builder: (context, provider,_) {
                     if(provider.isloaded){

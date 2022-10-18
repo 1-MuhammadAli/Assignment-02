@@ -16,10 +16,11 @@ class _PasswordTextFieldWidgetState extends State<PasswordTextFieldWidget> {
   bool isPasswordVisible=true;
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Center(
       child: Container(
-        width: 327,
-        height: 48.0,
+        width: screenSize.width*0.83,
+        height: screenSize.height*0.058,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           color: Colors.grey.withOpacity(0.1),

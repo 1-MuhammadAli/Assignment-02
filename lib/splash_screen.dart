@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), (){
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder:
-              (context) => id != null ? NewsScreen() : onBoarding==true ? WalkthroughScreen():LoginScreen(),
+              (context) => id != null ? AdminScreen() : onBoarding==true ? WalkthroughScreen():LoginScreen(),
           ));
     });
     return Scaffold(

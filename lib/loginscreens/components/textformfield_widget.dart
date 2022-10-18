@@ -21,7 +21,7 @@ class TextFormFieldWidget extends StatelessWidget {
       child: Container(
         //padding: const EdgeInsets.only(left: 51.0, right: 51.0),
         width: screenSize.width*0.83,
-        height: 48.0,
+        height: screenSize.height*0.058,
 
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),

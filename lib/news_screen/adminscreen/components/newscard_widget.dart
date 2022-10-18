@@ -16,8 +16,10 @@ class NewsCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Container(
-      width: 344,
+      width: screenSize.width*0.9,
+      //width: 344,
       height: 150,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
@@ -38,7 +40,8 @@ class NewsCardWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 10.0,top: 15),
             child:  Container(
-              width: 40.0,
+              //width: 40.0,
+              width: screenSize.width*0.1,
               height: 40.0,
               decoration: BoxDecoration(
                // color: Colors.yellowAccent,
@@ -55,7 +58,8 @@ class NewsCardWidget extends StatelessWidget {
               child: CachedNetworkImage(
                 imageUrl: image,
                 errorWidget: (context, url, error) => Container(
-                    width: 40.0,
+                   // width: 40.0,
+                  width: screenSize.width*0.1,
                     height: 40.0,
                     decoration: const BoxDecoration(
                       //color: Colors.yellowAccent,
@@ -68,7 +72,8 @@ class NewsCardWidget extends StatelessWidget {
                     ),
                     ),
                 placeholder: (context, url) => Container(
-                  width: 40.0,
+                  //width: 40.0,
+                  width: screenSize.width*0.1,
                   height: 40.0,
                   decoration: const BoxDecoration(
                     //color: Colors.yellowAccent,
@@ -102,7 +107,8 @@ class NewsCardWidget extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 60.0),
                   child: SizedBox(
-                    width: 272,
+                    width: screenSize.width*0.72,
+                    //width: 272,
                     child: Text(description,
                       style: GoogleFonts.openSans(
                           fontSize: 12,

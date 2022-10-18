@@ -8,11 +8,13 @@ class FloatingActionButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return FloatingActionButton(
+      backgroundColor: Colors.transparent,
       onPressed: onPressed,
       child: Container(
-          height: 60,
-          width: 60,
+          height: screenSize.height*0.067,
+          width: screenSize.width*0.15,
 
           decoration: const BoxDecoration(
               shape: BoxShape.circle,

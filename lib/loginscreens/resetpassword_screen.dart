@@ -42,6 +42,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -55,10 +56,10 @@ class ResetPasswordScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: 58,),
+            SizedBox(height: screenSize.height*0.07,),
             Container(
-              height: 116,
-              width: 116,
+              height: screenSize.height*0.14,
+              width: screenSize.width*0.3,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('images/Frame.png'),fit: BoxFit.fill
@@ -69,15 +70,15 @@ class ResetPasswordScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 66.0),
               child: SizedBox(
-                width: 275,
-                height: 48,
+                width: screenSize.width*0.8,
+                height: screenSize.height*0.058,
                 child: TextWidget(text: 'Check your email or phone number to retrieve your password.',
                     fontWeight: FontWeight.w400,
                     textSize: 16,
                     color: Color(0xffFFFFFF)),
               ),
             ),
-            SizedBox(height: 35,),
+            SizedBox(height: screenSize.height*0.045,),
             Form(
               key: formkey,
               child: Column(
@@ -98,7 +99,7 @@ class ResetPasswordScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  SizedBox(height: 24,),
+                  SizedBox(height: screenSize.height*0.03,),
                   PasswordTextFieldWidget(controller: confirmPassController,text: 'ConfirmPassword', textInputAction: TextInputAction.done,
                     validator: (value) {
                       // RegExp regex =
@@ -111,18 +112,20 @@ class ResetPasswordScreen extends StatelessWidget {
                       }
                     },
                   ),
-                  SizedBox(height: 35,),
+                  SizedBox(height: screenSize.height*0.045,),
 
                   ButtonWidget(text: 'Reset Password',
-                      height: 48,
-                      width: 327,
+                    width: screenSize.width*0.83,
+                    //327,
+                    height: screenSize.height*0.058,
+                    //48,
                       onPress: () {
                     resetpassword(passController.text.toString(),confirmPassController.text.toString());
                         // Navigator.push(
                         //   context,
                         //   MaterialPageRoute(builder: (context) => LoginScreen()),);
                       },),
-                  SizedBox(height: 140,),
+                  SizedBox(height: screenSize.height*0.16,),
 
 
 

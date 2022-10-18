@@ -100,11 +100,15 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 32,),
+                  SizedBox(height:
+                  screenSize.height*0.035
+                  //32,
+                  ),
                   ButtonWidget(
                     width: screenSize.width*0.83,
                     //327,
-                    height: 48,
+                    height: screenSize.height*0.058,
+                    //48,
                     text: 'Sign In',
                     onPress: () {
                       userApiServices.postUserData(emailController.text.toString(),
@@ -113,13 +117,13 @@ class LoginScreen extends StatelessWidget {
 
                     },
                   ),
-                  SizedBox(height: 48,),
+                  SizedBox(height: screenSize.height*0.058,),
                   Center(
                     child: TextWidget(text: 'Or by social accounts',
                         fontWeight: FontWeight.w400,
                         textSize: 14, color: Color(0xffFFFFFF)),
                   ),
-                  SizedBox(height: 20,),
+                  SizedBox(height: screenSize.height*0.025,),
 
                   Center(
                     child: Row(
@@ -133,7 +137,7 @@ class LoginScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: 80,),
+                  SizedBox(height: screenSize.height*0.095,),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

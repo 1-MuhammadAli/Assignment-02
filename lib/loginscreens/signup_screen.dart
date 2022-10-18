@@ -18,6 +18,7 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     SignUpApiService signUpApiServices=SignUpApiService();
     return Scaffold(
       backgroundColor: Colors.black,
@@ -34,18 +35,16 @@ class SignUpScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-              height: 58,
-            ),
+            SizedBox(height: screenSize.height*0.07),
             Container(
-              height: 116,
-              width: 116,
+              height: screenSize.height*0.14,
+              width: screenSize.width*0.3,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('images/Frame.png'), fit: BoxFit.fill)),
             ),
             SizedBox(
-              height: 51,
+              height:screenSize.height*0.06,
             ),
             Form(
               key: formkey,
@@ -66,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
                     textInputType: TextInputType.name,
                   ),
                   SizedBox(
-                    height: 24,
+                    height: screenSize.height*0.028,
                   ),
                   TextFormFieldWidget(
                     controller: emailController,
@@ -77,7 +76,7 @@ class SignUpScreen extends StatelessWidget {
                     textInputType: TextInputType.emailAddress,
                   ),
                   SizedBox(
-                    height: 24,
+                    height: screenSize.height*0.028,
                   ),
                   PasswordTextFieldWidget(
                     controller: passController,
@@ -98,7 +97,7 @@ class SignUpScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(
-                    height: 24,
+                    height: screenSize.height*0.028,
                   ),
                   PasswordTextFieldWidget(
                     controller: confirmPassController,
@@ -115,11 +114,11 @@ class SignUpScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(
-                    height: 32,
+                    height: screenSize.height*0.035,
                   ),
                   ButtonWidget(
-                    width: 327,
-                    height: 48,
+                    width: screenSize.width*0.83,
+                    height: screenSize.height*0.058,
                     text: 'Sign Up',
                     onPress: () {
                       signUpApiServices.postSignUpData(
@@ -131,7 +130,7 @@ class SignUpScreen extends StatelessWidget {
                     },
                   ),
                   SizedBox(
-                    height: 100,
+                    height: screenSize.height*0.12,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

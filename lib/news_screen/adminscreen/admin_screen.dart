@@ -29,6 +29,7 @@ class _AdminScreenState extends State<AdminScreen> {
   var current = 0;
   @override
   Widget build(BuildContext context) {
+    var screenSize=MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -46,8 +47,10 @@ class _AdminScreenState extends State<AdminScreen> {
         ),
         //leading: Icon(Icons.menu,color: Colors.white,),
         title: SizedBox(
-          height: 32,
-          width: 32,
+          height: screenSize.height*0.040,
+          width: screenSize.width*0.08,
+          // height: 32,
+          // width: 32,
           child: Image.asset('images/Frame.png'),
         ),
         centerTitle: true,
@@ -62,8 +65,9 @@ class _AdminScreenState extends State<AdminScreen> {
           child: Column(
             children: [
               SizedBox(
-                //width: double.infinity,
-                height: 42.5,
+                width: double.infinity,
+                height: screenSize.height*0.052,
+                //height: 42.5,
                 child: ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     itemCount: items.length,
@@ -80,7 +84,9 @@ class _AdminScreenState extends State<AdminScreen> {
                             child: AnimatedContainer(
                               duration: const Duration(milliseconds: 300),
                               margin: const EdgeInsets.only(left: 1),
-                              width: 130,
+                              width: screenSize.width*0.33,
+
+                             // width: 130,
                               height: 40,
                               decoration: BoxDecoration(
                                 color: Color(0xff1B212E),
@@ -99,8 +105,10 @@ class _AdminScreenState extends State<AdminScreen> {
                           Visibility(
                               visible: current == index,
                               child: Container(
-                                width: 130,
-                                height: 2.5,
+                                width: screenSize.width*0.33,
+                                height: screenSize.height*0.0025,
+                                // width: 130,
+                                // height: 2.5,
                                 decoration: const BoxDecoration(
                                   color: Colors.pinkAccent,
                                   //shape: BoxShape.circle
@@ -111,7 +119,9 @@ class _AdminScreenState extends State<AdminScreen> {
                     }),
               ),
               Container(
-                height: 598.6,
+                height: screenSize.height*0.77,
+                //  height:
+                //  598.6,
                 width: double.infinity,
                 child: screens[current],
               ),
