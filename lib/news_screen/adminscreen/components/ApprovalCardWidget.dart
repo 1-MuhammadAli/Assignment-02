@@ -25,7 +25,7 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
     var screenSize=MediaQuery.of(context).size;
     return Container(
       width: screenSize.width*0.88,
-      height: 150,
+      //height: 150,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           color: Color(0xff232836)
@@ -33,14 +33,15 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
       child: Stack(
         children: [
           Padding(
-            padding:  EdgeInsets.only(left: screenSize.width*0.8,top: 80),
+            padding:  EdgeInsets.only(left: screenSize.width*0.8,top: screenSize.height*0.05),
             child: InkWell(
               onTap: () {
                 setState(() {
                   selectIndex = widget.index;
                 });
               },
-                child: selectIndex==widget.index ?Icon(Icons.check_circle_outline,color: Colors.cyan,):Icon(Icons.circle_outlined,color: Colors.cyan,)),
+                child: selectIndex==widget.index ?Icon(Icons.check_circle_outline,color: Colors.cyan,):Icon(Icons.circle_outlined,color: Colors.cyan,)
+            ),
           ),
 
           Padding(
@@ -121,13 +122,16 @@ class _ApprovalCardWidgetState extends State<ApprovalCardWidget> {
                   padding:  EdgeInsets.only(left: screenSize.width*0.17),
                   child: SizedBox(
                     width: screenSize.width*0.72,
-                    child: Text(widget.description,
-                      style: GoogleFonts.openSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.white
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: screenSize.height*0.012),
+                      child: Text(widget.description,
+                        style: GoogleFonts.openSans(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white
+                        ),
+                        textAlign: TextAlign.start,
                       ),
-                      textAlign: TextAlign.start,
                     ),
                   ),
                 ),

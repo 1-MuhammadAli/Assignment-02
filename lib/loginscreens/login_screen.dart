@@ -113,14 +113,10 @@ class LoginScreen extends StatelessWidget {
                       //48,
                       text: 'Sign In',
                       onPress: () {
-                        userApiServices.postUserData(emailController.text.toString(),
-                          passController.text.toString(),
-                        );
                         if(formkey.currentState!.validate()){
-                          // print(nameController.text);
-                          // print(emailController.text);
-                          // print(numController.text);
-                          // print(passController.text);
+                          userApiServices.postUserData(emailController.text.toString(),
+                            passController.text.toString(),
+                          );
                         }
                       },
                     ),

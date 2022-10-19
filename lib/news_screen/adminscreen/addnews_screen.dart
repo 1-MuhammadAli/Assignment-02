@@ -1,21 +1,13 @@
-import 'dart:convert';
 import 'dart:core';
-import 'dart:core';
-import 'dart:io';
-
 import 'package:assignment_no_2/addnews_apiservices.dart';
 import 'package:assignment_no_2/constant.dart';
 import 'package:assignment_no_2/getallnews_apiservices.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import 'searchmatch_screen.dart';
 import 'package:assignment_no_2/widgets/button_widget.dart';
 import 'package:assignment_no_2/widgets/text_widget.dart';
 import 'package:assignment_no_2/news_screen/adminscreen/components/textfield_widget.dart';
 import 'package:flutter/material.dart';
-
 class AddNewsScreen extends StatelessWidget {
   final desController = TextEditingController();
   final titleController = TextEditingController();
@@ -23,6 +15,8 @@ class AddNewsScreen extends StatelessWidget {
   final String token1=token;
   final int leagueId = 31;
   AddNewsApiServices addNewsApiServices=AddNewsApiServices();
+
+  AddNewsScreen({Key? key}) : super(key: key);
   void startAddNewTransaction(BuildContext ctx) {
     showModalBottomSheet(
         isScrollControlled: true,
@@ -165,6 +159,7 @@ class AddNewsScreen extends StatelessWidget {
                               Icons.search,
                               color: Color(0xffFFFFFF),
                             )),
+                        showCursor: false,
                         style: TextStyle(color: Color(0xffFFFFFF)),
                         cursorColor: Color(0xffFFFFFF),
                         keyboardType: TextInputType.none,
@@ -184,14 +179,51 @@ class AddNewsScreen extends StatelessWidget {
                     // height: 48,
                     // width: 327,
                     onPress: () {
-                      addNewsApiServices.addnews(
-                          desController.text.toString(),
-                          titleController.text.toString(),
-                          id.toString(),
-                          leagueId.toString(),
-                          matchid.toString(),
-                        token1.toString()
-                      );
+                      if(titleController.text.isEmpty)
+                        {
+                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                            content: TextWidget(
+                              text: 'Title is Empty!',
+                              fontWeight: FontWeight.w400,
+                              textSize: 14,
+                              color: Colors.red,
+                          ),
+                            backgroundColor: Colors.white,
+                          ),
+                          );
+                        }else if(desController.text.isEmpty){
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: TextWidget(
+                            text: 'Description is Empty!',
+                            fontWeight: FontWeight.w400,
+                            textSize: 14,
+                            color: Colors.red,
+                          ),
+                          backgroundColor: Colors.white,
+                        ),
+                        );
+                      }else if(matchid==null){
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: TextWidget(
+                            text: 'Match is Empty!',
+                            fontWeight: FontWeight.w400,
+                            textSize: 14,
+                            color: Colors.red,
+                          ),
+                          backgroundColor: Colors.white,
+                        ),
+                        );
+                      }else{
+                        addNewsApiServices.addnews(
+                            desController.text.toString(),
+                            titleController.text.toString(),
+                            id.toString(),
+                            leagueId.toString(),
+                            matchid.toString(),
+                            token1.toString()
+                        );
+                      }
+
                     },
                   ),
                 )
@@ -203,3 +235,4 @@ class AddNewsScreen extends StatelessWidget {
     );
   }
 }
+

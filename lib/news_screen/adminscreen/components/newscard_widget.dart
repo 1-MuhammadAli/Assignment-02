@@ -20,7 +20,7 @@ class NewsCardWidget extends StatelessWidget {
     return Container(
       width: screenSize.width*0.9,
       //width: 344,
-      height: 150,
+      //height: 150,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5.0),
           color: Color(0xff232836)
@@ -111,13 +111,16 @@ class NewsCardWidget extends StatelessWidget {
                   child: SizedBox(
                     width: screenSize.width*0.72,
                     //width: 272,
-                    child: Text(description,
-                      style: GoogleFonts.openSans(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                          color: Colors.white
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: screenSize.height*0.012),
+                      child: Text(description,
+                        style: GoogleFonts.openSans(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w300,
+                            color: Colors.white
+                        ),
+                        textAlign: TextAlign.start,
                       ),
-                      textAlign: TextAlign.start,
                     ),
                   ),
                 ),

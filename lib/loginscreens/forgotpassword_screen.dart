@@ -74,15 +74,12 @@ class ForgotPasswordScreen extends StatelessWidget {
                       height: screenSize.height*0.058,
                       //48,
                         onPress: () {
-                      forgotPasswordApiService.forGotPasswordData(
-                        emailController.text.toString(),
 
-                      );
                       if(formkey.currentState!.validate()){
-                        // print(nameController.text);
-                        // print(emailController.text);
-                        // print(numController.text);
-                        // print(passController.text);
+                        forgotPasswordApiService.forGotPasswordData(
+                          emailController.text.toString(),
+
+                        );
                       }
                           Navigator.push(
                             context,

@@ -86,8 +86,8 @@ flutter:
   fonts:
    - family: OpenSans
      fonts:
-      - asset: fonts/OpenSans-Regular.ttf
-      - asset: fonts/OpenSans-Italic.ttf
+      - asset: fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf
+      - asset: fonts/OpenSans-VariableFont_wdth,wght.ttf
         style: italic
   #   - family: Trajan Pro
   #     fonts:

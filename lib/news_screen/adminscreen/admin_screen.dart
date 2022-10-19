@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'approvals_screen.dart';
 import 'feed_screen.dart';
 
@@ -93,12 +93,22 @@ class _AdminScreenState extends State<AdminScreen> {
                                 //borderRadius: BorderRadius.circular(5),
                               ),
                               child: Center(
-                                child: Text(
+                                child: GradientText(
                                   items[index],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: current == index ? Colors.pinkAccent : Colors.grey,),
+                                  gradientType: GradientType.linear,
+                                  gradientDirection: GradientDirection.ttb, 
+                                  colors: [
+                                    Color(0xffFFA36D),
+                                    Color(0xffFE816A),
+                                    Color(0xffFB5E63),
+                                  ],
                                 ),
+                                // Text(
+                                //   items[index],
+                                //   style: TextStyle(
+                                //     fontWeight: FontWeight.w500,
+                                //     color: current == index ? Colors.pinkAccent : Colors.grey,),
+                                // ),
                               ),
                             ),
                           ),
@@ -110,7 +120,7 @@ class _AdminScreenState extends State<AdminScreen> {
                                 // width: 130,
                                 //  height: 2.5,
                                 decoration: const BoxDecoration(
-                                  color: Colors.pinkAccent,
+                                  color: Color(0xffF8485E),
                                   //shape: BoxShape.circle
                                 ),
                               ))

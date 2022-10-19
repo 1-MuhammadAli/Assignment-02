@@ -59,13 +59,14 @@ class _NewsScreenState extends State<NewsScreen> {
 
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
+            icon: Icon(Icons.settings,),
             label: 'Settings',
 
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.amber[800],
+        selectedLabelStyle: TextStyle(),
         onTap: _onItemTapped,
       ),
     );

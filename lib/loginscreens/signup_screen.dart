@@ -123,17 +123,14 @@ class SignUpScreen extends StatelessWidget {
                       height: screenSize.height*0.058,
                       text: 'Sign Up',
                       onPress: () {
-                        signUpApiServices.postSignUpData(
-                          nameController.text.toString(),
-                          emailController.text.toString(),
-                          passController.text.toString(),
-                          confirmPassController.text.toString(),
-                        );
+
                         if(formkey.currentState!.validate()){
-                          // print(nameController.text);
-                          // print(emailController.text);
-                          // print(numController.text);
-                          // print(passController.text);
+                          signUpApiServices.postSignUpData(
+                            nameController.text.toString(),
+                            emailController.text.toString(),
+                            passController.text.toString(),
+                            confirmPassController.text.toString(),
+                          );
                         }
                       },
                     ),
